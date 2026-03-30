@@ -1,0 +1,10 @@
+{
+  "command": "make mypy",
+  "cwd": "/workspace/bnsyn-phase-controlled-emergent-dynamics",
+  "env_delta_names": [],
+  "exit_code": 0,
+  "stderr": "",
+  "stdout": "mypy src --strict --config-file pyproject.toml\nSuccess: no issues found in 72 source files\n",
+  "timestamp_end_utc": "2026-02-17T23:03:05.028337+00:00",
+  "timestamp_start_utc": "2026-02-17T23:02:52.695257+00:00"
+}

@@ -2,7 +2,7 @@ name: repo-governor-evidence
 
 on:
   schedule:
-    - cron: '0 6 * * 4'  # Weekly — Thursday 06:00 UTC
+    - cron: '0 6 * * 4'  # Weekly -- Thursday 06:00 UTC
   workflow_dispatch:
 
 permissions:

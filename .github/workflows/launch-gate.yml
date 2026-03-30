@@ -2,7 +2,7 @@ name: launch-gate
 
 on:
   schedule:
-    - cron: '0 7 * * 3'  # Weekly — Wednesday 07:00 UTC
+    - cron: '0 7 * * 3'  # Weekly -- Wednesday 07:00 UTC
   workflow_dispatch:
 
 permissions:

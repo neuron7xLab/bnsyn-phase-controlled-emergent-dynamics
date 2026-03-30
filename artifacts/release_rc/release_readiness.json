@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-01-31T01:35:10.895394Z",
+  "release_ready": true,
+  "version": "0.2.0",
+  "blocking_failures": [],
+  "checks": [
+    {
+      "name": "Core repository files",
+      "status": "pass",
+      "blocking": true,
+      "details": "All files present"
+    },
+    {
+      "name": "Governance evidence",
+      "status": "pass",
+      "blocking": true,
+      "details": "All files present"
+    },
+    {
+      "name": "Quality documentation",
+      "status": "pass",
+      "blocking": true,
+      "details": "All files present"
+    },
+    {
+      "name": "Quality scripts",
+      "status": "pass",
+      "blocking": true,
+      "details": "All files present"
+    },
+    {
+      "name": "Project version",
+      "status": "pass",
+      "blocking": true,
+      "details": "version=0.2.0"
+    },
+    {
+      "name": "Mutation baseline",
+      "status": "pass",
+      "blocking": true,
+      "details": "status=active, total_mutants=103"
+    }
+  ]
+}

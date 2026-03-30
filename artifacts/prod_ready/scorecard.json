@@ -1,0 +1,89 @@
+{
+  "final_verdict": "PASS",
+  "gates": {
+    "A": {
+      "name": "Build & Install",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/phase1_install.log",
+        "artifacts/prod_ready/logs/phase1_build.log"
+      ]
+    },
+    "B": {
+      "name": "Test Correctness",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/phase1_test.log"
+      ]
+    },
+    "C": {
+      "name": "Static Analysis & Lint",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateC_lint_rerun2.log",
+        "artifacts/prod_ready/logs/gateC_mypy.log"
+      ]
+    },
+    "D": {
+      "name": "Supply Chain Integrity",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/reports/sbom.cdx.json",
+        "artifacts/prod_ready/manifests/hashes.json"
+      ]
+    },
+    "E": {
+      "name": "Security Baseline",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateE_security.log",
+        "artifacts/pip-audit.json"
+      ]
+    },
+    "F": {
+      "name": "Config & Secret Hygiene",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/inventory.json",
+        "artifacts/prod_ready/logs/gateE_security.log"
+      ]
+    },
+    "G": {
+      "name": "Runtime Reliability",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateG_runtime.log",
+        "artifacts/prod_ready/logs/phase1_happypath.log"
+      ]
+    },
+    "H": {
+      "name": "Resource Discipline",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateH_resource.log"
+      ]
+    },
+    "I": {
+      "name": "Observability",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateI_observability.log"
+      ]
+    },
+    "J": {
+      "name": "Operator Documentation",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateJ_docs_replay.log"
+      ]
+    },
+    "K": {
+      "name": "Release Packaging",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateK_release.log",
+        "artifacts/prod_ready/release/manifest.json"
+      ]
+    }
+  }
+}

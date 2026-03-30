@@ -1,0 +1,28 @@
+{
+  "risks": [
+    {
+      "risk": "Legacy pylint findings remain; lint gate uses fail-under baseline 9.5",
+      "severity": "medium",
+      "likelihood": "medium",
+      "detection_gate": "C",
+      "mitigation": "Incrementally reduce warnings and raise fail-under",
+      "owner": "maintainers",
+      "status": "accepted",
+      "evidence": [
+        "artifacts/prod_ready/logs/gateC_lint_rerun2.log"
+      ]
+    },
+    {
+      "risk": "Build/test currently depend on network package index",
+      "severity": "medium",
+      "likelihood": "medium",
+      "detection_gate": "D",
+      "mitigation": "Adopt wheelhouse/offline install path in CI cleanroom stage",
+      "owner": "maintainers",
+      "status": "open",
+      "evidence": [
+        "artifacts/prod_ready/logs/phase1_install.log"
+      ]
+    }
+  ]
+}
