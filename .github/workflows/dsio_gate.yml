@@ -1,6 +1,8 @@
 name: dsio-gate
 
 on:
+  schedule:
+    - cron: '0 6 * * 2'  # Weekly — Tuesday 06:00 UTC
   workflow_dispatch:
 
 permissions:

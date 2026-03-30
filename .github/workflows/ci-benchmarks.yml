@@ -3,6 +3,8 @@ name: ci-benchmarks
 # Guard: non-PR-gate workflow; must remain off PRs.
 
 on:
+  schedule:
+    - cron: '0 4 * * 0'  # Weekly — Sunday 04:00 UTC
   workflow_dispatch:
     inputs:
       tier:

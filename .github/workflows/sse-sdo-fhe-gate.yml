@@ -1,6 +1,8 @@
 name: sse-sdo-fhe-gate
 
 on:
+  schedule:
+    - cron: '0 2 * * 5'  # Weekly — Friday 02:00 UTC
   workflow_dispatch:
 
 permissions:

@@ -3,6 +3,8 @@ name: ci-validation
 # Guard: non-PR-gate workflow; must remain off PRs.
 
 on:
+  schedule:
+    - cron: '0 6 * * 1'  # Weekly — Monday 06:00 UTC
   workflow_dispatch:
     inputs:
       mode:

@@ -1,6 +1,8 @@
 name: context-compressor-gate
 
 on:
+  schedule:
+    - cron: '0 3 * * 2'  # Weekly — Tuesday 03:00 UTC
   workflow_dispatch:
 
 permissions:

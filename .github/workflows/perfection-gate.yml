@@ -1,6 +1,8 @@
 name: perfection-gate
 
 on:
+  schedule:
+    - cron: '0 2 * * 3'  # Weekly — Wednesday 02:00 UTC
   workflow_dispatch:
 
 permissions:

@@ -3,6 +3,8 @@
 name: quality-mutation
 
 "on":
+  schedule:
+    - cron: '0 4 * * 3'  # Weekly — Wednesday 04:00 UTC
   workflow_dispatch:
 
 permissions:

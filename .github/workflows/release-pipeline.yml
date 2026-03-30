@@ -1,6 +1,8 @@
 name: release-pipeline
 
 on:
+  schedule:
+    - cron: '0 5 * * 4'  # Weekly — Thursday 05:00 UTC
   workflow_dispatch:
     inputs:
       bump:
