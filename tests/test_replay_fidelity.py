@@ -1,7 +1,6 @@
 """Tests for replay fidelity tracking."""
 
 import numpy as np
-import pytest
 
 from bnsyn.assembly.detector import AssemblyDetector
 from bnsyn.assembly.replay_fidelity import ReplayFidelityTracker

@@ -6,7 +6,6 @@ import numpy as np
 import pytest
 
 from bnsyn.neuromodulation.field import (
-    FieldState,
     NeuromodulationParams,
     NeuromodulatoryField,
 )

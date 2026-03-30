@@ -8,7 +8,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from bnsyn.emergence.phi_proxy import PhiProxyEngine, PhiProxyParams, PhiResult
+from bnsyn.emergence.phi_proxy import PhiProxyEngine, PhiProxyParams
 
 
 def _feed_independent_poisson(

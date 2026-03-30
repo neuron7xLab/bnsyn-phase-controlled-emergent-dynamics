@@ -7,14 +7,13 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 import numpy as np
-import pytest
 
 from bnsyn.causality.transfer_entropy import TEResult
 from bnsyn.emergence.phi_proxy import PhiResult
 from bnsyn.assembly.detector import AssemblyDetectionResult, Assembly
 from bnsyn.plasticity.structural import StructuralPlasticityReport
 from bnsyn.criticality.renormalization import RenormalizationResult, ScaleMetrics
-from bnsyn.proof.emergence_contract import EmergenceProofContract, EmergenceVerdict
+from bnsyn.proof.emergence_contract import EmergenceProofContract
 
 
 # ---------------------------------------------------------------------------

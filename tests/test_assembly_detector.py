@@ -1,7 +1,6 @@
 """Tests for cell assembly detection (PCA + Marchenko-Pastur)."""
 
 import numpy as np
-import pytest
 
 from bnsyn.assembly.detector import AssemblyDetector
 

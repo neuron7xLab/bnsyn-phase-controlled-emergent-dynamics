@@ -3,10 +3,8 @@
 from __future__ import annotations
 
 import numpy as np
-import pytest
 
 from bnsyn.causality.transfer_entropy import (
-    TEResult,
     TransferEntropyEngine,
     TransferEntropyParams,
 )
