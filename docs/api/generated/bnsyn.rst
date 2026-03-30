@@ -29,6 +29,7 @@
    plasticity
    production
    provenance
+   qa
    rng
    schemas
    sim

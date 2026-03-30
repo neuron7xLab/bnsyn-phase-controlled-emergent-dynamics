@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 
 sys.path.insert(0, str(SRC))
+sys.path.insert(0, str(ROOT))  # for top-level tools/ package used by bnsyn.qa
 
 project = "BN-Syn"
 author = "BN-Syn Contributors"
