@@ -67,8 +67,6 @@ BN-Syn uses a **Single-Source-of-Truth (SSOT)** governance model where:
 
 | Workflow | Triggers | Gates |
 |----------|----------|-------|
-| [ci-smoke.yml](../.github/workflows/ci-smoke.yml) | Every PR | SSOT + smoke tests |
-| [ci-validation.yml](../.github/workflows/ci-validation.yml) | Weekly + manual | SSOT + validation tests |
 
 ---
 

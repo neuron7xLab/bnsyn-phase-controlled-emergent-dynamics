@@ -119,7 +119,11 @@ class TransferEntropyEngine:
             self._bin_accum_i = 0.0
             self._steps_in_bin = 0
 
-    def compute(self) -> TEResult | None:
+    def compute(
+        self,
+        *,
+        seed: int = 42,
+    ) -> TEResult | None:
         """Compute transfer entropy if enough data is available.
 
         Returns None when the buffer does not yet contain enough bins
@@ -140,14 +144,15 @@ class TransferEntropyEngine:
         # Surrogates also serve as bias correction: by subtracting the mean
         # surrogate TE we remove the finite-sample upward bias that affects
         # both the real and surrogate estimates equally.
-        rng = np.random.default_rng(seed=42)
         n_sur = self._params.n_surrogates
         sur_e2i = np.empty(n_sur, dtype=np.float64)
         sur_i2e = np.empty(n_sur, dtype=np.float64)
 
         T = len(e_series)
+        shift_span = max(T - (k + 1), 1)
         for s in range(n_sur):
-            shift = rng.integers(k + 1, T)
+            # Deterministic surrogate shift sequence avoids global/random RNG state.
+            shift = ((seed + (s + 1) * 7919) % shift_span) + (k + 1)
             shifted_e = np.roll(e_series, int(shift))
             shifted_i = np.roll(i_series, int(shift))
             sur_e2i[s] = self._estimate_te(shifted_e, i_series, k)

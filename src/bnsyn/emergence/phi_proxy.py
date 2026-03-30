@@ -309,7 +309,7 @@ class PhiProxyEngine:
         Total number of neurons in the network.
     params : PhiProxyParams
         Configuration parameters.
-    rng : numpy.random.Generator
+    rng : np.random.Generator
         Random number generator for reproducibility.
     """
 
