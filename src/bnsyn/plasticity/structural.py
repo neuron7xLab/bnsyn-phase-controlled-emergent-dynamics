@@ -14,7 +14,6 @@ import math
 from dataclasses import dataclass
 
 import numpy as np
-import scipy.sparse as sp
 from numpy.typing import NDArray
 
 from bnsyn.connectivity.sparse import SparseConnectivity

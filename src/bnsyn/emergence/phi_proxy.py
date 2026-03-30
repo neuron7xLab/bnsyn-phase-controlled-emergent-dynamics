@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import itertools
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import numpy as np
 from numpy.typing import NDArray
@@ -391,8 +391,6 @@ class PhiProxyEngine:
 
         X_full_t = binned[:-lag]
         X_full_t1 = binned[lag:]
-        T = X_full_t.shape[0]
-
         sub_size = min(self._params.subnetwork_size, self._N)
         if sub_size < 2:
             return None
