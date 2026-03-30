@@ -28,8 +28,9 @@ artifacts/*
 !artifacts/ca_dccg/
 !artifacts/ca_dccg/**
 !artifacts/scientific_product/
-!artifacts/scientific_product/REGRESSION_BASELINES/
-!artifacts/scientific_product/REGRESSION_BASELINES/**
+!artifacts/scientific_product/**
+!artifacts/sse_sdo/
+!artifacts/sse_sdo/**
 benchmarks/baselines/
 !benchmarks/baselines/
 !benchmarks/baselines/golden_baseline.yml
