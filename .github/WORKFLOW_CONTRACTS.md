@@ -106,7 +106,7 @@ The workflows below are the required PR gates that must pass on pull requests. S
 | `quality-mutation.yml` | `quality-mutation` | long-running | `workflow_dispatch` | NO |
 | `release-pipeline.yml` | `release-pipeline` | long-running | `workflow_dispatch` | NO |
 | `repo-governor-evidence.yml` | `repo-governor-evidence` | long-running | `workflow_dispatch` | NO |
-| `science.yml` | `science` | long-running | `workflow_dispatch` | NO |
+| `science.yml` | `science` | long-running | `schedule, workflow_dispatch` | NO |
 | `smlrs_gate.yml` | `smlrs-gate` | long-running | `workflow_dispatch` | NO |
 | `scientific_product_gate.yml` | `scientific-product-gate` | long-running | `workflow_dispatch` | NO |
 | `sse-sdo-fhe-gate.yml` | `sse-sdo-fhe-gate` | long-running | `workflow_dispatch` | NO |

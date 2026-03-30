@@ -11,4 +11,6 @@ bnsyn.viz
    :recursive:
 
    dashboard
+   emergence_plot
    interactive
+   product_report

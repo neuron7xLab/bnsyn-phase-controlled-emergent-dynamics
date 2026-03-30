@@ -355,7 +355,7 @@ print(f"Memory: {process.memory_info().rss / 1024**3:.2f} GB")
 
 If none of the above solutions work:
 
-1. **Check existing issues:** [GitHub Issues](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/issues)
+1. **Check existing issues:** [GitHub Issues](https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/issues)
 2. **Search documentation:** [docs/INDEX.md](INDEX.md)
 3. **Ask for help:** Open a new issue with:
    - Python version

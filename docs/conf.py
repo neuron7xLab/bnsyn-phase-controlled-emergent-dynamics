@@ -64,4 +64,14 @@ html_theme_options = {
 
 nitpicky = False
 
+# Linkcheck: suppress transient failures on external GitHub URLs.
+# GitHub frequently returns 4xx for unauthenticated blob/issue/PR links
+# in CI runners, even for valid URLs. We validate repo structure directly.
+linkcheck_ignore = [
+    r"https://github\.com/neuron7xLab/",
+    r"https://github\.com/gitleaks/",
+]
+linkcheck_timeout = 10
+linkcheck_retries = 2
+
 os.environ.setdefault("PYTHONUTF8", "1")

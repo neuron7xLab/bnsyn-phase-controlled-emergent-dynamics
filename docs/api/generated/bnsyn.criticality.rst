@@ -13,3 +13,4 @@ bnsyn.criticality
    analysis
    branching
    phase_transition
+   renormalization

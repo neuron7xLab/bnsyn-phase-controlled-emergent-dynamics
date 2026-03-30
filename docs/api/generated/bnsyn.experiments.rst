@@ -11,3 +11,5 @@ bnsyn.experiments
    :recursive:
 
    declarative
+   emergence
+   phase_space

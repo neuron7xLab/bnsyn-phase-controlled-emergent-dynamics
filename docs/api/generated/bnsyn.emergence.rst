@@ -11,3 +11,4 @@ bnsyn.emergence
    :recursive:
 
    crystallizer
+   phi_proxy

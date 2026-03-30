@@ -4,10 +4,10 @@ Welcome to the BN-Syn API reference.
 
 ## Quickstart
 
-- Project overview: <https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/blob/main/README.md>
-- Formal specification: <https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/SPEC.md>
-- Reproducibility contract: <https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/REPRODUCIBILITY.md>
-- API contract: <https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/API_CONTRACT.md>
+- Project overview: <https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/blob/main/README.md>
+- Formal specification: <https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/SPEC.md>
+- Reproducibility contract: <https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/REPRODUCIBILITY.md>
+- API contract: <https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/API_CONTRACT.md>
 
 ## Reference
 
@@ -28,7 +28,7 @@ modules
 
 ## Determinism Contract
 
-See <https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/REPRODUCIBILITY.md> for the determinism and seed protocol.
+See <https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/blob/main/docs/REPRODUCIBILITY.md> for the determinism and seed protocol.
 
 ## Related Documentation
 

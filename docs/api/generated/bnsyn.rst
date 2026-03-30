@@ -10,8 +10,12 @@
    :toctree:
    :recursive:
 
+   api
+   assembly
    benchmarks
+   biodigital
    calibration
+   causality
    cli
    config
    connectivity
@@ -23,12 +27,17 @@
    experiments
    incremental
    memory
+   neuromodulation
    neuron
    neurons
    numerics
+   paths
    plasticity
+   presentation
    production
+   proof
    provenance
+   qa
    rng
    schemas
    sim

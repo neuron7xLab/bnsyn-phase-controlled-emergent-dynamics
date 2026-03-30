@@ -198,7 +198,7 @@ jobs:
           if [ -f "$BASE_DIR/pyproject.toml" ] && [ -f "$BASE_DIR/Makefile" ]; then
             python -m venv "$BASE_DIR/.venv"
             "$BASE_DIR/.venv/bin/python" -m pip install -U pip setuptools wheel
-            "$BASE_DIR/.venv/bin/python" -m pip install -e "$BASE_DIR[dev,test]"
+            "$BASE_DIR/.venv/bin/python" -m pip install -e "${BASE_DIR}[dev,test]"
             make -C "$BASE_DIR" quickstart-smoke 2>&1 | tee artifacts/base_logs/quickstart-smoke.log
             python -m scripts.compare_canonical_runs \
               --baseline-dir "$BASE_DIR/artifacts/canonical_run" \

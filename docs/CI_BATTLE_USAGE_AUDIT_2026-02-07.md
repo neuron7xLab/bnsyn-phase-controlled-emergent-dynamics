@@ -1,7 +1,7 @@
 # CI + Battle Usage Verification Audit
 
 Date (as-of): 2026-02-07 Europe/Zaporozhye  
-Target: https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics
+Target: https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics
 
 ## FACTS
 

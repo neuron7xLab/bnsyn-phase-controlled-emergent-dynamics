@@ -11,4 +11,5 @@ bnsyn.plasticity
    :recursive:
 
    stdp
+   structural
    three_factor

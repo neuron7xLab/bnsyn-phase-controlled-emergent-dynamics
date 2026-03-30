@@ -10,3 +10,9 @@ bnsyn.cli
    
       main
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      CLIExitCode
+   
