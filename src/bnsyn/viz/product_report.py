@@ -298,7 +298,7 @@ def write_product_report_bundle(
         "primary_visual_data_sha256": _manifest_artifact_sha(manifest, "population_rate_trace.npy"),
     }
 
-    validate_product_summary_payload(product_summary)
+    validate_product_summary_payload(dict(product_summary))
 
     product_summary_path = artifact_dir / "product_summary.json"
     product_summary_path.write_text(

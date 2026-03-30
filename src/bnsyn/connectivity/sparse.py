@@ -229,6 +229,7 @@ class SparseConnectivity:
         """Recalculate metrics from current W."""
         n_pre, n_post = self.shape
         if self.format == "sparse":
+            assert isinstance(self.W, sp.csr_matrix)
             nnz = self.W.nnz
         else:
             nnz = int(np.count_nonzero(self.W))
@@ -247,6 +248,7 @@ class SparseConnectivity:
         if self.format == "dense":
             self.W[row, col] = value
         else:
+            assert isinstance(self.W, sp.csr_matrix)
             lil = self.W.tolil()
             lil[row, col] = value
             self.W = lil.tocsr()
@@ -257,6 +259,7 @@ class SparseConnectivity:
         if self.format == "dense":
             self.W[row, col] = 0.0
         else:
+            assert isinstance(self.W, sp.csr_matrix)
             lil = self.W.tolil()
             lil[row, col] = 0.0
             self.W = lil.tocsr()

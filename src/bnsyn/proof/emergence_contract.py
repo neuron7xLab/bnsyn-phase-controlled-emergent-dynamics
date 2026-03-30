@@ -250,6 +250,6 @@ class EmergenceProofContract:
         return main_path
 
 
-def _write_component(path: Path, data: dict) -> None:
+def _write_component(path: Path, data: dict[str, object]) -> None:
     """Write a single component report JSON file."""
     path.write_text(json.dumps(data, indent=2), encoding="utf-8")

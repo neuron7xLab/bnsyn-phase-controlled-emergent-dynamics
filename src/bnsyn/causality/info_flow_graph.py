@@ -5,7 +5,7 @@ from __future__ import annotations
 from .transfer_entropy import TEResult
 
 
-def te_to_flow_graph(result: TEResult) -> dict:
+def te_to_flow_graph(result: TEResult) -> dict[str, object]:
     """Produce a flat dict representation of transfer entropy results.
 
     Parameters

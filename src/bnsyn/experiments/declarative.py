@@ -569,6 +569,55 @@ def _write_json(path: Path, payload: dict[str, Any]) -> None:
     _atomic_write_text(path, json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
+
+
+def _write_summary_reports_outputs(context: PipelineContext, ctx: PipelineContext) -> dict[str, Any]:
+    _write_json(context.artifact_dir / "summary_metrics.json", _require_report(ctx.summary_metrics, "summary_metrics"))
+    _write_json(context.artifact_dir / "criticality_report.json", _require_report(ctx.criticality_report, "criticality_report"))
+    _write_json(context.artifact_dir / "phase_space_report.json", _require_report(ctx.phase_space_report, "phase_space_report"))
+    np.save(context.artifact_dir / "population_rate_trace.npy", _require_array(ctx.population_rate_trace, "population_rate_trace"))
+    np.save(context.artifact_dir / "sigma_trace.npy", _require_array(ctx.sigma_trace, "sigma_trace"))
+    np.save(context.artifact_dir / "coherence_trace.npy", _require_array(ctx.coherence_trace, "coherence_trace"))
+    _write_grayscale_png(_require_array(ctx.phase_space_rate_sigma_image, "phase_space_rate_sigma_image"), context.artifact_dir / "phase_space_rate_sigma.png")
+    _write_grayscale_png(_require_array(ctx.phase_space_rate_coherence_image, "phase_space_rate_coherence_image"), context.artifact_dir / "phase_space_rate_coherence.png")
+    _write_grayscale_png(_require_array(ctx.phase_space_activity_map_image, "phase_space_activity_map_image"), context.artifact_dir / "phase_space_activity_map.png")
+    _write_grayscale_png(_require_array(ctx.raster_image, "raster_image"), context.artifact_dir / "raster_plot.png")
+    _write_grayscale_png(_require_array(ctx.population_rate_image, "population_rate_image"), context.artifact_dir / "population_rate_plot.png")
+    _write_grayscale_png(_require_array(ctx.emergence_image, "emergence_image"), context.artifact_dir / "emergence_plot.png")
+    return {
+        "summary_metrics_path": (context.artifact_dir / "summary_metrics.json").as_posix(),
+        "criticality_report_path": (context.artifact_dir / "criticality_report.json").as_posix(),
+        "phase_space_report_path": (context.artifact_dir / "phase_space_report.json").as_posix(),
+        "population_rate_trace_path": (context.artifact_dir / "population_rate_trace.npy").as_posix(),
+        "sigma_trace_path": (context.artifact_dir / "sigma_trace.npy").as_posix(),
+        "coherence_trace_path": (context.artifact_dir / "coherence_trace.npy").as_posix(),
+        "phase_space_rate_sigma_path": (context.artifact_dir / "phase_space_rate_sigma.png").as_posix(),
+        "phase_space_rate_coherence_path": (context.artifact_dir / "phase_space_rate_coherence.png").as_posix(),
+        "phase_space_activity_map_path": (context.artifact_dir / "phase_space_activity_map.png").as_posix(),
+        "raster_plot_path": (context.artifact_dir / "raster_plot.png").as_posix(),
+        "population_rate_plot_path": (context.artifact_dir / "population_rate_plot.png").as_posix(),
+        "emergence_plot_path": (context.artifact_dir / "emergence_plot.png").as_posix(),
+    }
+
+
+def _write_avalanche_outputs(context: PipelineContext, ctx: PipelineContext) -> dict[str, Any]:
+    _write_json(context.artifact_dir / "avalanche_report.json", _require_report(ctx.avalanche_report, "avalanche_report"))
+    _write_json(context.artifact_dir / "avalanche_fit_report.json", _require_report(ctx.avalanche_fit_report, "avalanche_fit_report"))
+    return {
+        "avalanche_report_path": (context.artifact_dir / "avalanche_report.json").as_posix(),
+        "avalanche_fit_report_path": (context.artifact_dir / "avalanche_fit_report.json").as_posix(),
+    }
+
+
+def _write_robustness_outputs(context: PipelineContext, ctx: PipelineContext) -> dict[str, Any]:
+    _write_json(context.artifact_dir / "robustness_report.json", _require_report(ctx.robustness_report, "robustness_report"))
+    _write_json(context.artifact_dir / "envelope_report.json", _require_report(ctx.envelope_report, "envelope_report"))
+    return {
+        "robustness_report_path": (context.artifact_dir / "robustness_report.json").as_posix(),
+        "envelope_report_path": (context.artifact_dir / "envelope_report.json").as_posix(),
+    }
+
+
 def _sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -1180,34 +1229,7 @@ def run_canonical_live_bundle(
                 inputs={"artifact_npz": cast(Path, context.artifact_npz_path).as_posix(), "policy": _pipeline_policy(context)},
                 required_artifacts={"artifact_npz": cast(Path, context.artifact_npz_path)},
                 compute=lambda: stage_summary_reports(context),
-                write_outputs=lambda ctx: (
-                    _write_json(context.artifact_dir / "summary_metrics.json", _require_report(ctx.summary_metrics, "summary_metrics")),
-                    _write_json(context.artifact_dir / "criticality_report.json", _require_report(ctx.criticality_report, "criticality_report")),
-                    _write_json(context.artifact_dir / "phase_space_report.json", _require_report(ctx.phase_space_report, "phase_space_report")),
-                    np.save(context.artifact_dir / "population_rate_trace.npy", _require_array(ctx.population_rate_trace, "population_rate_trace")),
-                    np.save(context.artifact_dir / "sigma_trace.npy", _require_array(ctx.sigma_trace, "sigma_trace")),
-                    np.save(context.artifact_dir / "coherence_trace.npy", _require_array(ctx.coherence_trace, "coherence_trace")),
-                    _write_grayscale_png(_require_array(ctx.phase_space_rate_sigma_image, "phase_space_rate_sigma_image"), context.artifact_dir / "phase_space_rate_sigma.png"),
-                    _write_grayscale_png(_require_array(ctx.phase_space_rate_coherence_image, "phase_space_rate_coherence_image"), context.artifact_dir / "phase_space_rate_coherence.png"),
-                    _write_grayscale_png(_require_array(ctx.phase_space_activity_map_image, "phase_space_activity_map_image"), context.artifact_dir / "phase_space_activity_map.png"),
-                    _write_grayscale_png(_require_array(ctx.raster_image, "raster_image"), context.artifact_dir / "raster_plot.png"),
-                    _write_grayscale_png(_require_array(ctx.population_rate_image, "population_rate_image"), context.artifact_dir / "population_rate_plot.png"),
-                    _write_grayscale_png(_require_array(ctx.emergence_image, "emergence_image"), context.artifact_dir / "emergence_plot.png"),
-                    {
-                        "summary_metrics_path": (context.artifact_dir / "summary_metrics.json").as_posix(),
-                        "criticality_report_path": (context.artifact_dir / "criticality_report.json").as_posix(),
-                        "phase_space_report_path": (context.artifact_dir / "phase_space_report.json").as_posix(),
-                        "population_rate_trace_path": (context.artifact_dir / "population_rate_trace.npy").as_posix(),
-                        "sigma_trace_path": (context.artifact_dir / "sigma_trace.npy").as_posix(),
-                        "coherence_trace_path": (context.artifact_dir / "coherence_trace.npy").as_posix(),
-                        "phase_space_rate_sigma_path": (context.artifact_dir / "phase_space_rate_sigma.png").as_posix(),
-                        "phase_space_rate_coherence_path": (context.artifact_dir / "phase_space_rate_coherence.png").as_posix(),
-                        "phase_space_activity_map_path": (context.artifact_dir / "phase_space_activity_map.png").as_posix(),
-                        "raster_plot_path": (context.artifact_dir / "raster_plot.png").as_posix(),
-                        "population_rate_plot_path": (context.artifact_dir / "population_rate_plot.png").as_posix(),
-                        "emergence_plot_path": (context.artifact_dir / "emergence_plot.png").as_posix(),
-                    },
-                )[-1],
+                write_outputs=lambda ctx: _write_summary_reports_outputs(context, ctx),
             )
         else:
             context.summary_metrics = json.loads((context.artifact_dir / "summary_metrics.json").read_text(encoding="utf-8"))
@@ -1220,14 +1242,7 @@ def run_canonical_live_bundle(
                 inputs={"artifact_npz": cast(Path, context.artifact_npz_path).as_posix(), "policy": _pipeline_policy(context)},
                 required_artifacts={"artifact_npz": cast(Path, context.artifact_npz_path)},
                 compute=lambda: stage_avalanche_and_fit(context),
-                write_outputs=lambda ctx: (
-                    _write_json(context.artifact_dir / "avalanche_report.json", _require_report(ctx.avalanche_report, "avalanche_report")),
-                    _write_json(context.artifact_dir / "avalanche_fit_report.json", _require_report(ctx.avalanche_fit_report, "avalanche_fit_report")),
-                    {
-                        "avalanche_report_path": (context.artifact_dir / "avalanche_report.json").as_posix(),
-                        "avalanche_fit_report_path": (context.artifact_dir / "avalanche_fit_report.json").as_posix(),
-                    },
-                )[-1],
+                write_outputs=lambda ctx: _write_avalanche_outputs(context, ctx),
             )
         else:
             context.avalanche_report = json.loads((context.artifact_dir / "avalanche_report.json").read_text(encoding="utf-8"))
@@ -1239,14 +1254,7 @@ def run_canonical_live_bundle(
                 inputs={"canonical_repro_seeds": list(CANONICAL_REPRO_SEEDS), "policy": _pipeline_policy(context)},
                 required_artifacts={"artifact_npz": cast(Path, context.artifact_npz_path)},
                 compute=lambda: stage_robustness_envelope(context),
-                write_outputs=lambda ctx: (
-                    _write_json(context.artifact_dir / "robustness_report.json", _require_report(ctx.robustness_report, "robustness_report")),
-                    _write_json(context.artifact_dir / "envelope_report.json", _require_report(ctx.envelope_report, "envelope_report")),
-                    {
-                        "robustness_report_path": (context.artifact_dir / "robustness_report.json").as_posix(),
-                        "envelope_report_path": (context.artifact_dir / "envelope_report.json").as_posix(),
-                    },
-                )[-1],
+                write_outputs=lambda ctx: _write_robustness_outputs(context, ctx),
             )
         else:
             context.robustness_report = json.loads((context.artifact_dir / "robustness_report.json").read_text(encoding="utf-8"))

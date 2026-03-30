@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import itertools
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import numpy as np
 from numpy.typing import NDArray
@@ -128,7 +128,7 @@ def _log_det_cholesky(cov: Float64Array) -> float:
         log(det(cov)).
     """
     L = np.linalg.cholesky(cov)
-    return 2.0 * np.sum(np.log(np.diag(L)))
+    return float(2.0 * np.sum(np.log(np.diag(L))))
 
 
 def _gaussian_mi(
@@ -372,7 +372,7 @@ class PhiProxyEngine:
 
         trimmed = raw[: n_bins * bin_size]
         binned = trimmed.reshape(n_bins, bin_size, self._N).sum(axis=1)
-        return binned
+        return np.asarray(binned)
 
     def compute(self) -> PhiResult | None:
         """Compute Phi* across random subnetwork subsamples.
@@ -391,7 +391,7 @@ class PhiProxyEngine:
 
         X_full_t = binned[:-lag]
         X_full_t1 = binned[lag:]
-        T = X_full_t.shape[0]
+        X_full_t.shape[0]
 
         sub_size = min(self._params.subnetwork_size, self._N)
         if sub_size < 2:
