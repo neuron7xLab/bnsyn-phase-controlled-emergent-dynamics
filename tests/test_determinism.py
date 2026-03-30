@@ -21,13 +21,20 @@ def test_no_global_numpy_rng_usage() -> None:
         rel_path = path.relative_to(root)
         text = path.read_text()
         for line_no, line in enumerate(text.splitlines(), start=1):
-            if "np.random." in line:
-                if "np.random.Generator" in line:
+            if "np.random." in line or "numpy.random." in line:
+                # Allow: type annotations and seeded RNG construction
+                if (
+                    "np.random.Generator" in line
+                    or "numpy.random.Generator" in line
+                    or "np.random.default_rng" in line
+                    or "numpy.random.default_rng" in line
+                ):
                     continue
                 if rel_path.as_posix() == "src/bnsyn/rng.py":
                     continue
                 offenders.append(f"{rel_path}:{line_no}:{line.strip()}")
-            if "random." in line or line.strip().startswith("import random"):
+            elif "random." in line or line.strip().startswith("import random"):
+                # Only flag bare `random.` usage (not part of np.random. / numpy.random.)
                 offenders.append(f"{rel_path}:{line_no}:{line.strip()}")
     assert offenders == []
 

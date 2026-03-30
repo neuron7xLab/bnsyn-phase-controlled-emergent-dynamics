@@ -56,7 +56,6 @@ def test_field_decays_without_spikes(params: NeuromodulationParams) -> None:
 
 def test_da_responds_to_rpe(ring5: NeuromodulatoryField) -> None:
     """Positive RPE + spikes -> DA increases for spiking neurons."""
-    N = 5
     spiked = np.array([True, True, False, False, False])
 
     # Positive RPE: spike_rate > target_rate

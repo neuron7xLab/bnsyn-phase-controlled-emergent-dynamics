@@ -32,7 +32,7 @@
 ## PR-Gate Definition (Authoritative)
 
 * Required PR checks are defined in `.github/PR_GATES.yml`; this document MUST match it.
-* Required PR-gates MUST be: `ci-pr-atomic.yml`, `workflow-integrity.yml`, `math-quality-gate.yml`, `scientific_product_gate.yml`, `dependency-review.yml`, `pr_gate.yml`, `canonical-proof-spine.yml`.
+* Required PR-gates MUST be: `ci-pr-atomic.yml`, `workflow-integrity.yml`, `codeql.yml`, `dependency-review.yml`.
 * Required checks MUST NOT include any workflow other than the PR-gates listed above.
 * If any other section conflicts with this, this section wins.
 
@@ -81,36 +81,36 @@ The workflows below are the required PR gates that must pass on pull requests. S
 | `_reusable_quality.yml` | `Reusable Quality Checks` | long-running | `workflow_call` | YES |
 | `_reusable_ssot.yml` | `Reusable SSOT Gates` | long-running | `workflow_call` | YES |
 | `_reusable_validation_tests.yml` | `Reusable Validation Tests` | long-running | `workflow_call` | YES |
-| `benchmarks.yml` | `benchmarks` | long-running | `schedule, workflow_dispatch` | NO |
-| `ci-benchmarks-elite.yml` | `ci-benchmarks-elite` | long-running | `schedule, workflow_dispatch` | NO |
-| `ci-benchmarks.yml` | `ci-benchmarks` | long-running | `schedule, workflow_dispatch` | NO |
+| `benchmarks.yml` | `benchmarks` | long-running | `workflow_dispatch` | NO |
+| `ci-benchmarks-elite.yml` | `ci-benchmarks-elite` | long-running | `workflow_dispatch` | NO |
+| `ci-benchmarks.yml` | `ci-benchmarks` | long-running | `workflow_dispatch` | NO |
 | `ci-pr-atomic.yml` | `ci-pr-atomic` | PR-gate | `pull_request, push, workflow_dispatch, workflow_call` | YES |
-| `canonical-proof-spine.yml` | `canonical-proof-spine` | PR-gate | `pull_request, workflow_dispatch` | NO |
+| `canonical-proof-spine.yml` | `canonical-proof-spine` | long-running | `workflow_dispatch` | NO |
 | `ci-pr.yml` | `ci-pr` | long-running | `workflow_dispatch, workflow_call` | YES |
-| `ci-smoke.yml` | `ci-smoke` | long-running | `schedule, workflow_dispatch` | NO |
-| `ci-validation.yml` | `ci-validation` | long-running | `schedule, workflow_dispatch` | NO |
-| `codecov-health.yml` | `codecov-health-check` | long-running | `schedule, workflow_dispatch` | NO |
-| `codeql.yml` | `CodeQL` | long-running | `schedule, workflow_dispatch` | NO |
-| `context_compressor_gate.yml` | `context-compressor-gate` | long-running | `schedule, workflow_dispatch` | NO |
-| `dependency-watch.yml` | `dependency-watch` | long-running | `schedule, workflow_dispatch` | NO |
+| `ci-smoke.yml` | `ci-smoke` | long-running | `workflow_dispatch` | NO |
+| `ci-validation.yml` | `ci-validation` | long-running | `workflow_dispatch` | NO |
+| `codecov-health.yml` | `codecov-health-check` | long-running | `workflow_dispatch` | NO |
+| `codeql.yml` | `CodeQL` | PR-gate | `pull_request, push, schedule, workflow_dispatch` | NO |
+| `context_compressor_gate.yml` | `context-compressor-gate` | long-running | `workflow_dispatch` | NO |
+| `dependency-watch.yml` | `dependency-watch` | long-running | `workflow_dispatch` | NO |
 | `dependency-review.yml` | `dependency-review` | PR-gate | `pull_request` | NO |
-| `docs.yml` | `docs` | long-running | `schedule, workflow_dispatch` | NO |
-| `dsio_gate.yml` | `dsio-gate` | long-running | `schedule, workflow_dispatch` | NO |
+| `docs.yml` | `docs` | long-running | `workflow_dispatch` | NO |
+| `dsio_gate.yml` | `dsio-gate` | long-running | `workflow_dispatch` | NO |
 | `formal-coq.yml` | `formal-coq` | long-running | `schedule, workflow_dispatch` | NO |
 | `formal-tla.yml` | `formal-tla` | long-running | `schedule, workflow_dispatch` | NO |
-| `launch-gate.yml` | `launch-gate` | long-running | `schedule, workflow_dispatch` | NO |
-| `perfection-gate.yml` | `perfection-gate` | long-running | `schedule, workflow_dispatch` | NO |
-| `math-quality-gate.yml` | `Math Quality Gate` | PR-gate | `pull_request, push` | NO |
-| `physics-equivalence.yml` | `physics-equivalence` | long-running | `schedule, workflow_dispatch` | NO |
-| `pr_gate.yml` | `pr-gate` | PR-gate | `pull_request, workflow_dispatch` | NO |
-| `quality-mutation.yml` | `quality-mutation` | long-running | `schedule, workflow_dispatch` | NO |
-| `release-pipeline.yml` | `release-pipeline` | long-running | `schedule, workflow_dispatch` | NO |
-| `repo-governor-evidence.yml` | `repo-governor-evidence` | long-running | `schedule, workflow_dispatch` | NO |
-| `science.yml` | `science` | long-running | `schedule, workflow_dispatch` | NO |
-| `smlrs_gate.yml` | `smlrs-gate` | long-running | `schedule, workflow_dispatch` | NO |
-| `scientific_product_gate.yml` | `scientific-product-gate` | PR-gate | `pull_request, push` | NO |
-| `sse-sdo-fhe-gate.yml` | `sse-sdo-fhe-gate` | long-running | `schedule, workflow_dispatch` | NO |
-| `sse-sdo-max-gate.yml` | `sse-sdo-max-gate` | long-running | `schedule, workflow_dispatch` | NO |
+| `launch-gate.yml` | `launch-gate` | long-running | `workflow_dispatch` | NO |
+| `perfection-gate.yml` | `perfection-gate` | long-running | `workflow_dispatch` | NO |
+| `math-quality-gate.yml` | `Math Quality Gate` | long-running | `schedule, workflow_dispatch` | NO |
+| `physics-equivalence.yml` | `physics-equivalence` | long-running | `workflow_dispatch` | NO |
+| `pr_gate.yml` | `pr-gate` | long-running | `workflow_dispatch` | NO |
+| `quality-mutation.yml` | `quality-mutation` | long-running | `workflow_dispatch` | NO |
+| `release-pipeline.yml` | `release-pipeline` | long-running | `workflow_dispatch` | NO |
+| `repo-governor-evidence.yml` | `repo-governor-evidence` | long-running | `workflow_dispatch` | NO |
+| `science.yml` | `science` | long-running | `workflow_dispatch` | NO |
+| `smlrs_gate.yml` | `smlrs-gate` | long-running | `workflow_dispatch` | NO |
+| `scientific_product_gate.yml` | `scientific-product-gate` | long-running | `workflow_dispatch` | NO |
+| `sse-sdo-fhe-gate.yml` | `sse-sdo-fhe-gate` | long-running | `workflow_dispatch` | NO |
+| `sse-sdo-max-gate.yml` | `sse-sdo-max-gate` | long-running | `workflow_dispatch` | NO |
 | `workflow-integrity.yml` | `Workflow Integrity` | PR-gate | `pull_request, push` | NO |
 
 ---

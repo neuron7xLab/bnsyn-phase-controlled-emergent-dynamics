@@ -354,14 +354,21 @@ def evaluate_policy(
                     f"extra={format_trigger_list(extra_triggers)}"
                 )
         else:
-            expected = {"schedule", "workflow_dispatch"}
-            if trigger_set != expected:
+            # Non-reusable long-running workflows must use only manual/scheduled triggers.
+            # Acceptable sets: {workflow_dispatch}, {schedule}, {schedule, workflow_dispatch}.
+            allowed_non_reusable = {
+                frozenset({"workflow_dispatch"}),
+                frozenset({"schedule"}),
+                frozenset({"schedule", "workflow_dispatch"}),
+            }
+            if frozenset(trigger_set) not in allowed_non_reusable:
                 violations.append(
                     "VIOLATION: LONG_RUNNING_TRIGGER_SET "
                     f"{workflow_file} class=long-running reusable=NO "
                     f"triggers={format_trigger_list(trigger_set)} "
-                    f"expected={format_trigger_list(expected)} "
-                    f"diff={format_diff(expected, trigger_set)}"
+                    f"expected={format_trigger_list({'workflow_dispatch'})} or "
+                    f"{format_trigger_list({'schedule','workflow_dispatch'})} "
+                    f"diff={format_diff({'workflow_dispatch'}, trigger_set)}"
                 )
 
     return sorted(violations), len(workflows)

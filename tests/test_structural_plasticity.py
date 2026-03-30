@@ -84,8 +84,6 @@ class TestSprouting:
         N, nE, nI = 30, 20, 10
 
         W_exc, W_inh = _make_weights(N, nE, nI, rng)
-        initial_nnz = W_exc.metrics.nnz
-
         params = StructuralPlasticityParams(
             enabled=True,
             theta_sprout=0.3,

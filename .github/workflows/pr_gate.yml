@@ -1,7 +1,8 @@
 name: pr-gate
 
+# NON-PR-GATE: runs on manual dispatch only.
+# Core PR gates are enforced by ci-pr-atomic and workflow-integrity.
 on:
-  pull_request:
   workflow_dispatch:
 
 permissions:

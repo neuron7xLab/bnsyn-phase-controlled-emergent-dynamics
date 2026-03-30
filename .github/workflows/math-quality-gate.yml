@@ -1,6 +1,11 @@
 name: Math Quality Gate
 
-on: [push, pull_request]
+# NON-PR-GATE: runs on manual dispatch and schedule only.
+# Math invariant tests are covered by ci-pr-atomic on PRs.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1'
 
 permissions:
   contents: read

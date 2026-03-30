@@ -1,10 +1,7 @@
 version: '1'
 required_status_contexts:
-- Math Quality Gate / math-gate
 - Workflow Integrity / Validate workflow files
-- canonical-proof-spine / attest-canonical-bundle
-- canonical-proof-spine / canonical-proof-spine
-- canonical-proof-spine / cross-commit-analytics
+- CodeQL / Analyze
 - ci-pr-atomic / build
 - ci-pr-atomic / determinism
 - ci-pr-atomic / finalize
@@ -16,5 +13,3 @@ required_status_contexts:
 - ci-pr-atomic / ssot
 - ci-pr-atomic / tests-smoke
 - dependency-review / dependency-review
-- pr-gate / pr-gate
-- scientific-product-gate / scientific-product

@@ -1,8 +1,7 @@
 # BN-Syn Thermostated Bio-AI System
 
-[![canonical-proof-spine](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/canonical-proof-spine.yml/badge.svg)](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/canonical-proof-spine.yml)
-[![neurodrift-cross-commit](https://img.shields.io/badge/neurodrift-cross--commit%20analytics-blue)](./.github/workflows/canonical-proof-spine.yml)
-[![oidc-attestation](https://img.shields.io/badge/OIDC-attest--canonical--bundle-darkgreen)](./.github/workflows/canonical-proof-spine.yml)
+[![CI](https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/ci-pr-atomic.yml/badge.svg)](https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/ci-pr-atomic.yml)
+[![CodeQL](https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/codeql.yml/badge.svg)](https://github.com/neuron7xLab/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/codeql.yml)
 
 BN-Syn is a deterministic simulation repository for phase-controlled emergent neural dynamics with AdEx neurons, STDP plasticity, and criticality control.
 

@@ -7,40 +7,30 @@
 3. [ ] Enable **Require a pull request before merging**.
 4. [ ] Enable **Require status checks to pass before merging**.
 5. [ ] Add required check: `ci-pr-atomic`.
-6. [ ] Add required check: `math-quality-gate`.
-7. [ ] Add required check: `workflow-integrity`.
+6. [ ] Add required check: `workflow-integrity`.
+7. [ ] Add required check: `CodeQL`.
 8. [ ] Add required check: `dependency-review`.
-9. [ ] Add required check: `scientific-product-gate`.
-10. [ ] Add required check: `pr-gate`.
-11. [ ] Add required check: `canonical-proof-spine`.
-12. [ ] Add required check: `cross-commit-analytics`.
-13. [ ] Add required check: `attest-canonical-bundle`.
-14. [ ] Enable **Require branches to be up to date before merging**.
-15. [ ] Enable **Dismiss stale approvals**.
-16. [ ] Do **not** allow administrators to bypass the required checks above.
+9. [ ] Enable **Require branches to be up to date before merging**.
+10. [ ] Enable **Dismiss stale approvals**.
+11. [ ] Do **not** allow administrators to bypass the required checks above.
 
 ## Required status contexts (job-level + matrix-level)
 
 All contexts below MUST be green before merge:
 
-- `ci-pr-atomic / gate-profile`
-- `ci-pr-atomic / determinism`
-- `ci-pr-atomic / quality`
+- `Workflow Integrity / Validate workflow files`
+- `CodeQL / Analyze`
 - `ci-pr-atomic / build`
+- `ci-pr-atomic / determinism`
+- `ci-pr-atomic / finalize`
+- `ci-pr-atomic / gate-profile`
+- `ci-pr-atomic / quality`
+- `ci-pr-atomic / security`
 - `ci-pr-atomic / smoke-wheel-matrix (py3.11)`
 - `ci-pr-atomic / smoke-wheel-matrix (py3.12)`
-- `ci-pr-atomic / tests-smoke`
 - `ci-pr-atomic / ssot`
-- `ci-pr-atomic / security`
-- `ci-pr-atomic / finalize`
-- `Workflow Integrity / Validate workflow files`
-- `Math Quality Gate / math-gate`
+- `ci-pr-atomic / tests-smoke`
 - `dependency-review / dependency-review`
-- `scientific-product-gate / scientific-product`
-- `pr-gate / pr-gate`
-- `canonical-proof-spine / canonical-proof-spine`
-- `canonical-proof-spine / cross-commit-analytics`
-- `canonical-proof-spine / attest-canonical-bundle`
 
 ## Governance-proof evidence (blocking semantics)
 
@@ -53,24 +43,29 @@ All contexts below MUST be green before merge:
 | Up-to-date branch policy decision | PENDING | PENDING | PENDING |
 | Admin bypass disabled for required checks | PENDING | PENDING | PENDING |
 
-## Absolute-zero cache reset before Genesis Run
+## CI baseline after consolidation
 
-Invalidate legacy GitHub Actions caches before the first baseline run on `main`:
+The following PR gates are now active on every pull request and push to `main`:
 
-```bash
-gh cache delete --all --repo neuron7x/bnsyn-phase-controlled-emergent-dynamics
-```
+| Workflow | Purpose | Timeout |
+| --- | --- | --- |
+| `ci-pr-atomic.yml` | Install, lint, test, build, security | 20–30 min |
+| `workflow-integrity.yml` | Enforce workflow governance contracts | 5 min |
+| `codeql.yml` | Static security analysis (Python) | 15 min |
+| `dependency-review.yml` | Dependency vulnerability scanning | 5 min |
 
-This forces the next `workflow_dispatch` run of `canonical-proof-spine.yml` to rebuild from zero state and validates that `scripts/bootstrap.sh` does not depend on residual cache state.
+All other workflows (`canonical-proof-spine.yml`, `math-quality-gate.yml`, `pr_gate.yml`,
+`scientific_product_gate.yml`, etc.) have been moved to `workflow_dispatch`-only to eliminate
+PR-gate noise. They remain available for manual or scheduled validation runs.
 
 ## Genesis Run protocol
 
 Immediately after merge:
 
-1. trigger `canonical-proof-spine.yml` via `workflow_dispatch` on `main`;
-2. confirm `canonical-proof-spine`, `cross-commit-analytics` (on the next PR), and `attest-canonical-bundle` are registered as required checks;
-3. archive the resulting `canonical_run_bundle.tgz` and attestation as **The Baseline Bundle**;
-4. treat that bundle as the reference artifact for all future `compare_canonical_runs.py` drift checks.
+1. Trigger `canonical-proof-spine.yml` via `workflow_dispatch` on `main`.
+2. Confirm `ci-pr-atomic`, `workflow-integrity`, `CodeQL`, and `dependency-review` are
+   registered as required checks in branch protection settings.
+3. Archive the resulting `canonical_run_bundle.tgz` as **The Baseline Bundle**.
 
 ## Control PR protocol (negative testing)
 

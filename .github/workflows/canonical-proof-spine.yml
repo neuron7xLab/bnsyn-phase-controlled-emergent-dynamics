@@ -1,7 +1,8 @@
 name: canonical-proof-spine
 
+# NON-PR-GATE: canonical proof pipeline is too long (75 min) for every PR.
+# Run via workflow_dispatch for release validation or manual proof regeneration.
 on:
-  pull_request:
   workflow_dispatch:
 
 permissions:

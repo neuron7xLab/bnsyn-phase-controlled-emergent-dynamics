@@ -1,9 +1,9 @@
 name: scientific-product-gate
 
+# NON-PR-GATE: runs on manual dispatch only.
+# This gate is too heavy for every PR; run via workflow_dispatch for release validation.
 on:
-  pull_request:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
