@@ -2,7 +2,7 @@
 
 - Manifest version: `1.0`
 - Generated marker: `deterministic`
-- Repository fingerprint: `3e5201848f51a76b0bafad66c4c647cea2a780778fa637582276729ac8a596d6`
+- Repository fingerprint: `7575b122eb42ac1d586886b25eb9738bb57f429c66d210ddde5f42d52f954bc1`
 - Required PR gates source: `.github/PR_GATES.yml`
 - Required PR gates SHA-256: `5ec87b49db654362aceda66d6cb036ee6b94ef7046d8bf5c89a620e909683b17`
 
@@ -12,8 +12,8 @@
 - Reusable workflow files (`_reusable_*.yml`): **9**
 - Workflows declaring `workflow_call`: **11**
 - Required PR gates (`.github/PR_GATES.yml`): **7**
-- Coverage minimum percent (`quality/coverage_gate.json`): **98.0**
-- Coverage baseline percent (`quality/coverage_gate.json`): **98.32**
+- Coverage minimum percent (`quality/coverage_gate.json`): **95.0**
+- Coverage baseline percent (`quality/coverage_gate.json`): **95.98**
 - Mutation baseline score (`quality/mutation_baseline.json`): **51.61**
 - Mutation total mutants (`quality/mutation_baseline.json`): **31**
 - `ci_manifest.json` exists: **False**

@@ -49,8 +49,8 @@
       "Makefile",
       "README.md"
     ],
-    "coverage_baseline_percent": 98.32,
-    "coverage_minimum_percent": 98.0,
+    "coverage_baseline_percent": 95.98,
+    "coverage_minimum_percent": 95.0,
     "mutation_baseline_score": 51.61,
     "mutation_total_mutants": 31,
     "required_pr_gate_total": 7,
@@ -67,7 +67,7 @@
     ],
     "generated_files_are_readonly": true
   },
-  "repo_ref": "3e5201848f51a76b0bafad66c4c647cea2a780778fa637582276729ac8a596d6",
+  "repo_ref": "7575b122eb42ac1d586886b25eb9738bb57f429c66d210ddde5f42d52f954bc1",
   "required_pr_gates": {
     "required_pr_gate_total": 7,
     "sha256": "5ec87b49db654362aceda66d6cb036ee6b94ef7046d8bf5c89a620e909683b17",
