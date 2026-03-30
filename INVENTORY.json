@@ -7,8 +7,8 @@
     ".github"
   ],
   "counts": {
-    "src": 116,
-    "tests": 233,
+    "src": 129,
+    "tests": 243,
     "docs": 297,
     ".github": 56
   },
