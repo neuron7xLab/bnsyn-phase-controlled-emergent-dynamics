@@ -1,0 +1,1146 @@
+init log dir
+docs/PLACEHOLDER_BASELINE_CYCLE0.md:22:python -m scripts.scan_placeholders --format text
+docs/PLACEHOLDER_BASELINE_CYCLE0.md:34:python -m scripts.scan_placeholders --format json
+docs/appendix/codebase_readiness_audit_2026-02-15.json:178:        "file:docs/appendix/PRODUCTION_ROADMAP.md#L156-L164: structured logging still marked TODO",
+docs/_generated/script_help/scan_placeholders.txt:1:usage: scan_placeholders.py [-h] [--format {text,json}]
+docs/_generated/script_help/scan_placeholders.txt:3:Scan repository for placeholder signals.
+tests/test_scan_placeholders.py:8:from scripts import scan_placeholders
+tests/test_scan_placeholders.py:13:def test_scan_placeholders_json_contract() -> None:
+tests/test_scan_placeholders.py:14:    findings = scan_placeholders.collect_findings()
+tests/test_scan_placeholders.py:44:    findings = scan_placeholders.collect_findings()
+tests/test_scan_placeholders.py:97:        "    raise NotImplementedError\n"
+tests/test_scan_placeholders.py:99:        "    raise NotImplementedError()\n"
+tests/test_scan_placeholders.py:101:        "    raise builtins.NotImplementedError()\n",
+tests/test_scan_placeholders.py:105:    original_root = scan_placeholders.ROOT
+tests/test_scan_placeholders.py:106:    original_targets = scan_placeholders.TARGET_DIRS
+tests/test_scan_placeholders.py:108:        scan_placeholders.ROOT = scan_root
+tests/test_scan_placeholders.py:109:        scan_placeholders.TARGET_DIRS = ("scripts",)
+tests/test_scan_placeholders.py:110:        findings = scan_placeholders.collect_findings()
+tests/test_scan_placeholders.py:112:        scan_placeholders.ROOT = original_root
+tests/test_scan_placeholders.py:113:        scan_placeholders.TARGET_DIRS = original_targets
+tests/test_scan_placeholders.py:118:    assert all(item.signature == "raise_NotImplementedError" for item in findings)
+tests/test_scan_placeholders.py:122:def test_scan_placeholders_cli_json_output(monkeypatch, capsys) -> None:
+tests/test_scan_placeholders.py:123:    monkeypatch.setattr(sys, "argv", ["scan_placeholders", "--format", "json"])
+tests/test_scan_placeholders.py:124:    exit_code = scan_placeholders.main()
+tests/test_scan_placeholders.py:132:def test_placeholder_scan_and_registry_have_no_open_entries() -> None:
+tests/test_scan_placeholders.py:133:    findings = scan_placeholders.collect_findings()
+tests/test_experiments_declarative.py:102:    stub_result = {"runs": [{"seed": 1, "metrics": {"sigma": 1.0}}]}
+tests/test_experiments_declarative.py:105:        return stub_result
+tests/test_experiments_declarative.py:111:    assert payload == stub_result
+tests/test_experiments_declarative.py:116:    stub_result = {"runs": [{"seed": 1, "metrics": {"sigma": 1.0}}]}
+tests/test_experiments_declarative.py:119:    monkeypatch.setattr(declarative, "run_experiment", lambda _: stub_result)
+tests/test_experiments_declarative.py:124:    assert json.dumps(stub_result, indent=2, sort_keys=True) in captured
+docs/AUDIT_TASKS_2026-02-15.md:37:- Спостереження: поточний guard перевіряє лише bare `except` і `TODO/FIXME` у Python-коді, але не валідність документації.
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:7:    rule: "placeholder-scan must return 0 findings OR all findings status=RESOLVED with evidence"
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:50:  - name: placeholder_scan_text
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:51:    command: python -m scripts.scan_placeholders --format text
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:53:  - name: placeholder_scan_json
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:54:    command: python -m scripts.scan_placeholders --format json
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:57:    command: pytest -q tests/test_scan_placeholders.py
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:64:  - docs/placeholder_cycles/cycle1/plan.md
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:65:  - docs/placeholder_cycles/cycle1/acceptance_map.yaml
+docs/placeholder_cycles/cycle1/acceptance_map.yaml:66:  - docs/placeholder_cycles/cycle1/worklist.json
+docs/placeholder_cycles/cycle1/plan.md:12:   - `scripts/scan_placeholders.py`
+docs/placeholder_cycles/cycle1/plan.md:13:   - `tests/test_scan_placeholders.py`
+docs/placeholder_cycles/cycle1/plan.md:26:### PH_BATCH_02 — Test harness placeholder guards
+docs/scripts/scan-placeholders.md:1:# `scan_placeholders.py`
+docs/scripts/scan-placeholders.md:4:Scan code/docs trees for placeholder signals used by governance gates.
+docs/scripts/scan-placeholders.md:7:- Invocation: `python -m scripts.scan_placeholders --help`
+docs/scripts/scan-placeholders.md:21:python -m scripts.scan_placeholders --help
+tests/test_manifest_tools.py:33:    (root / "tools" / "update_manifest.py").write_text("# tool placeholder\n", encoding="utf-8")
+tests/test_no_escape_tripwires.py:48:    needles = ("TODO", "FIXME")
+docs/scripts/index.md:51:| `scan_placeholders.py` | Scan code/docs trees for placeholder signals used by governance gates. | Writes artifacts only | [scan-placeholders.md](./scan-placeholders.md) |
+docs/PLACEHOLDER_REGISTRY.md:3:Canonical registry for placeholder remediation cycles.
+docs/PLACEHOLDER_REGISTRY.md:7:- Placeholder scan (text): `python -m scripts.scan_placeholders --format text`
+docs/PLACEHOLDER_REGISTRY.md:8:- Placeholder scan (json): `python -m scripts.scan_placeholders --format json`
+docs/SCRIPTS/index.md:54:| `scan_placeholders.py` | Scan code/docs trees for placeholder signals used by governance gates. | available |
+docs/SCRIPTS/index.md:1350:## `scan_placeholders.py`
+docs/SCRIPTS/index.md:1352:**Purpose:** Scan code/docs trees for placeholder signals used by governance gates.
+docs/SCRIPTS/index.md:1359:python -m scripts.scan_placeholders --help
+src/bnsyn/viz/dashboard.py:50:    Imports matplotlib at runtime to avoid mypy checking missing stubs.
+src/contracts/math_contracts.py
+src/contracts/__init__.py
+src/bnsyn/calibration/accuracy_speed.py
+src/bnsyn/calibration/__init__.py
+src/bnsyn/calibration/fit.py
+src/bnsyn/connectivity/__init__.py
+src/bnsyn/connectivity/sparse.py
+src/bnsyn/neuron/__init__.py
+src/bnsyn/neuron/adex.py
+src/bnsyn/viz/__init__.py
+src/bnsyn/viz/dashboard.py
+src/bnsyn/viz/interactive.py
+src/bnsyn/provenance/manifest_builder.py
+src/bnsyn/provenance/manifest.py
+src/bnsyn/provenance/__init__.py
+src/bnsyn/neurons.py
+src/bnsyn/synapses.py
+src/bnsyn/sim/network.py
+src/bnsyn/sim/__init__.py
+src/bnsyn/cli.py
+src/bnsyn/emergence/crystallizer.py
+src/bnsyn/emergence/__init__.py
+src/bnsyn/benchmarks/regime.py
+src/bnsyn/benchmarks/__init__.py
+src/bnsyn/energy/regularization.py
+src/bnsyn/energy/__init__.py
+src/bnsyn/schemas/experiment.py
+src/bnsyn/schemas/__init__.py
+src/bnsyn/production/connectivity.py
+src/bnsyn/production/__init__.py
+src/bnsyn/production/adex.py
+src/bnsyn/production/jax_backend.py
+src/bnsyn/py.typed
+src/bnsyn/temperature/schedule.py
+src/bnsyn/temperature/__init__.py
+src/bnsyn/plasticity/stdp.py
+src/bnsyn/plasticity/__init__.py
+src/bnsyn/plasticity/three_factor.py
+src/bnsyn/experiments/__init__.py
+src/bnsyn/experiments/declarative.py
+src/bnsyn/simulation.py
+src/bnsyn/memory/consolidator.py
+src/bnsyn/memory/ledger.py
+src/bnsyn/memory/__init__.py
+src/bnsyn/memory/trace.py
+src/bnsyn/synapse/conductance.py
+src/bnsyn/synapse/__init__.py
+src/bnsyn/validation/inputs.py
+src/bnsyn/validation/__init__.py
+src/bnsyn/incremental.py
+src/bnsyn/rng.py
+src/bnsyn/consolidation/dual_weight.py
+src/bnsyn/consolidation/__init__.py
+src/bnsyn/api.py
+src/bnsyn/__main__.py
+src/bnsyn/criticality/analysis.py
+src/bnsyn/criticality/phase_transition.py
+src/bnsyn/criticality/__init__.py
+src/bnsyn/criticality/branching.py
+src/bnsyn/sleep/cycle.py
+src/bnsyn/sleep/stages.py
+src/bnsyn/sleep/__init__.py
+src/bnsyn/sleep/replay.py
+src/bnsyn/testing/faults.py
+src/bnsyn/testing/__init__.py
+src/bnsyn/control.py
+src/bnsyn/__init__.py
+src/bnsyn/numerics/integrators.py
+src/bnsyn/numerics/__init__.py
+src/bnsyn/vcg.py
+src/bnsyn/config.py
+src/bnsyn/tools/benchmark_sleep_stack_scale.py
+src/bnsyn/tools/run_scaled_sleep_stack.py
+src/bnsyn/tools/__init__.py
+docs/BENCHMARK_MAP.md:9:| P0-3 Three-factor learning | `learning_weight_entropy`, `learning_convergence_error` | Weight distribution behavior and convergence to target. |
+tests/test_principal_test_hardening.py:17:    def test_entropy_current_does_not_exceed_baseline(self) -> None:
+tests/test_principal_test_hardening.py:18:        baseline = json.loads((REPO_ROOT / "entropy" / "baseline.json").read_text(encoding="utf-8"))
+tests/test_principal_test_hardening.py:19:        current = json.loads((REPO_ROOT / "entropy" / "current.json").read_text(encoding="utf-8"))
+docs/appendix/intelligence_cycle_report.json:811:      "entropy_non_increasing",
+docs/appendix/intelligence_cycle_report.json:823:        "entropy_non_increasing",
+docs/appendix/PRODUCTION_ROADMAP.md:73:- Hypothesis strategies for neurobiologically plausible inputs
+tests/test_entropy_artifacts_guard.py:5:from entropy.guards.check_entropy_artifacts import run_guard
+tests/test_entropy_artifacts_guard.py:8:def test_entropy_artifacts_guard_passes() -> None:
+docs/RELEASE_READINESS.md:37:7. **Entropy gate consistency**: current repository entropy metrics must satisfy
+docs/RELEASE_READINESS.md:38:   comparators in `entropy/policy.json` against `entropy/baseline.json` (no regressions).
+docs/repo_map.md:18:| `entropy/` | Entropy/quality tracking policies and guard scripts. | Experimental/governance tooling |
+docs/benchmarks/SCHEMA.md:108:| `learning_weight_entropy` | bits | Shannon entropy of final weights |
+docs/benchmarks/SCHEMA.md:119:- `learning_weight_entropy` uses Shannon entropy on positive weights: `-Σ(p * log2(p))` with `p = w / Σw`.
+docs/PR40_EVIDENCE_REPORT.md:143:**This is NOT a bug** - it's the actual biological mechanism being simulated:
+docs/PR40_EVIDENCE_REPORT.md:323:This is a valid and impressive result. The effect is robust across seed sets and consistent with the biological mechanisms implemented in the DualWeights model.
+docs/_inventory.md:13:- entropy
+docs/sleep_stack.md:5:The Sleep–Emergence Stack integrates sleep-wake cycles with memory consolidation, attractor crystallization, and phase transition tracking. This provides a cohesive framework for studying emergent dynamics in bio-inspired neural networks.
+docs/PHYSICAL_VALIDITY.md:23:| T0 | Temperature mean | Weight entropy | Exploration mean |
+docs/scripts/benchmark-physics.md:4:Ground-truth physics benchmark for BN-Syn throughput scaling. This script establishes the performance manifold baseline that all optimizations must preserve. It measures biophysical throughput under fixed deterministic conditions. Parameters ---------- --backend : str Execution backend: 'reference' (default) or 'accelerated' --output : str Path to output JSON file (default: benchmarks/physics_baseline.json) --seed : int Random seed for deterministic reproduction (default: 42) --neurons : int Number of neurons in the network (default: 200) --dt : float Timestep in milliseconds (default: 0.1) --steps : int Number of simulation steps (default: 1000) Returns ------- None Writes JSON with ground-truth metrics to file or stdout Notes ----- This benchmark is the SSOT (Single Source of Truth) for physics-preserving optimization. All acceleration must match these results within tolerance. References ---------- docs/SPEC.md#P2-11 Problem statement STEP 1
+docs/ENTROPY_LEDGER.md:5:- PR themes: `process_evidence_bundle`, `guarded_entropy_artifacts`
+docs/ENTROPY_LEDGER.md:6:- Selected batches: 1 (process entropy)
+docs/ENTROPY_LEDGER.md:20:| M1 | Dependency pin ratio (`==`) in `pyproject.toml` dependency surfaces | 0.9459 | >= 0.94 | pass | `entropy/metrics.json` |
+docs/ENTROPY_LEDGER.md:21:| M1b | SHA-pinned GitHub Actions ratio in `.github/workflows` | 0.0 | informational | risk | `entropy/metrics.json` |
+docs/ENTROPY_LEDGER.md:22:| M2 | Determinism controls (`hypothesis.derandomize`, `PYTHONHASHSEED`) | 2 | >= 2 | pass | `entropy/metrics.json` |
+docs/ENTROPY_LEDGER.md:23:| M3 | Contract validation signals (typed validation boundary modules present) | 2 | >= 2 | pass | `entropy/metrics.json` |
+docs/ENTROPY_LEDGER.md:24:| M4 | Entropy guard test count | 0 | >= 1 | fail | `evidence/entropy/baseline.json` |
+docs/ENTROPY_LEDGER.md:25:| M5 | Entropy evidence bundle completeness | 0 | >= 1 | fail | `evidence/entropy/baseline.json` |
+docs/ENTROPY_LEDGER.md:29:1. Missing canonical entropy ledger artifact (`docs/ENTROPY_LEDGER.md`) — process entropy.
+docs/ENTROPY_LEDGER.md:30:2. Missing machine-readable entropy metrics (`entropy/metrics.json`) — process entropy.
+docs/ENTROPY_LEDGER.md:31:3. Missing command evidence log (`entropy/commands.log`) — audit entropy.
+docs/ENTROPY_LEDGER.md:32:4. Missing acceptance mapping (`entropy/acceptance_map.yaml`) — gate ambiguity.
+docs/ENTROPY_LEDGER.md:33:5. Missing regression guard for entropy artifacts — no relapse prevention.
+docs/ENTROPY_LEDGER.md:34:6. No entropy-specific evidence snapshots (`evidence/entropy/*.json`) — weak traceability.
+docs/ENTROPY_LEDGER.md:35:7. No dedicated test asserting entropy artifact validity.
+docs/ENTROPY_LEDGER.md:37:9. Determinism checks exist, but no unified entropy gate script.
+docs/ENTROPY_LEDGER.md:42:### Selected entropy themes
+docs/ENTROPY_LEDGER.md:44:2. Regression guard for entropy artifacts and thresholds.
+docs/ENTROPY_LEDGER.md:47:- Fix: add canonical entropy artifacts (`A-F`) with baseline/final metrics and acceptance map.
+docs/ENTROPY_LEDGER.md:48:- Guard: `entropy/guards/check_entropy_artifacts.py` + `tests/test_entropy_artifacts_guard.py`.
+docs/ENTROPY_LEDGER.md:49:- Evidence: `entropy/metrics.json`, `entropy/commands.log`, `evidence/entropy/per_cycle/CYCLE_1.json`.
+docs/ENTROPY_LEDGER.md:53:- Added canonical artifacts required for entropy accounting.
+docs/ENTROPY_LEDGER.md:63:| M4 entropy guard tests | 0 | 1 | +1 |
+docs/SCRIPTS/index.md:17:| `benchmark_physics.py` | Ground-truth physics benchmark for BN-Syn throughput scaling. This script establishes the performance manifold baseline that all optimizations must preserve. It measures biophysical throughput under fixed deterministic conditions. Parameters ---------- --backend : str Execution backend: 'reference' (default) or 'accelerated' --output : str Path to output JSON file (default: benchmarks/physics_baseline.json) --seed : int Random seed for deterministic reproduction (default: 42) --neurons : int Number of neurons in the network (default: 200) --dt : float Timestep in milliseconds (default: 0.1) --steps : int Number of simulation steps (default: 1000) Returns ------- None Writes JSON with ground-truth metrics to file or stdout Notes ----- This benchmark is the SSOT (Single Source of Truth) for physics-preserving optimization. All acceleration must match these results within tolerance. References ---------- docs/SPEC.md#P2-11 Problem statement STEP 1 | unavailable (exit 1) |
+docs/SCRIPTS/index.md:205:**Purpose:** Ground-truth physics benchmark for BN-Syn throughput scaling. This script establishes the performance manifold baseline that all optimizations must preserve. It measures biophysical throughput under fixed deterministic conditions. Parameters ---------- --backend : str Execution backend: 'reference' (default) or 'accelerated' --output : str Path to output JSON file (default: benchmarks/physics_baseline.json) --seed : int Random seed for deterministic reproduction (default: 42) --neurons : int Number of neurons in the network (default: 200) --dt : float Timestep in milliseconds (default: 0.1) --steps : int Number of simulation steps (default: 1000) Returns ------- None Writes JSON with ground-truth metrics to file or stdout Notes ----- This benchmark is the SSOT (Single Source of Truth) for physics-preserving optimization. All acceleration must match these results within tolerance. References ---------- docs/SPEC.md#P2-11 Problem statement STEP 1
+tests/test_release_readiness.py:31:def test_check_entropy_gate_passes_when_metrics_match(tmp_path: Path) -> None:
+tests/test_release_readiness.py:32:    entropy_dir = tmp_path / "entropy"
+tests/test_release_readiness.py:33:    entropy_dir.mkdir(parents=True)
+tests/test_release_readiness.py:34:    (entropy_dir / "policy.json").write_text(
+tests/test_release_readiness.py:45:    (entropy_dir / "baseline.json").write_text(
+tests/test_release_readiness.py:65:        result = release_readiness.check_entropy_gate(tmp_path)
+tests/properties/test_properties_bnsyn.py:10:4. Bounded spike rates: Firing rates stay within biological bounds
+tests/properties/test_properties_bnsyn.py:121:    """Property: Spike rates should remain within biological bounds.
+tests/properties/test_properties_bnsyn.py:127:    No neuron should spike at rates >1kHz (biological constraint).
+tests/test_entropy_gate.py:6:from tools.entropy_gate.compute_metrics import compute_metrics, flatten
+tests/test_entropy_gate.py:19:def test_entropy_gate_no_regressions() -> None:
+tests/test_entropy_gate.py:21:    policy = _load_json(repo_root / "entropy" / "policy.json")
+tests/test_entropy_gate.py:22:    baseline = _load_json(repo_root / "entropy" / "baseline.json")
+src/bnsyn/viz/interactive.py:67:    st.markdown("Real-time exploration of bio-inspired spiking neural networks")
+scripts/validate_trifix_invariants.py:25:    pass
+scripts/validate_docs_testing_sync.py:15:    pass
+scripts/validate_synthetic_claims.py:18:    pass
+tests/test_scan_placeholders.py:97:        "    raise NotImplementedError\n"
+tests/test_scan_placeholders.py:99:        "    raise NotImplementedError()\n"
+tests/test_scan_placeholders.py:101:        "    raise builtins.NotImplementedError()\n",
+tests/test_scan_placeholders.py:118:    assert all(item.signature == "raise_NotImplementedError" for item in findings)
+scripts/scan_placeholders.py:4:signals (e.g., pass-in-except, NotImplementedError, and template markers) and
+scripts/scan_placeholders.py:90:                (isinstance(func, ast.Name) and func.id == "NotImplementedError")
+scripts/scan_placeholders.py:91:                or (isinstance(func, ast.Attribute) and func.attr == "NotImplementedError")
+scripts/scan_placeholders.py:100:                        signature="raise_NotImplementedError",
+scripts/validate_deps_against_imports.py:18:    pass
+tests/test_experiments_declarative.py:102:    stub_result = {"runs": [{"seed": 1, "metrics": {"sigma": 1.0}}]}
+tests/test_experiments_declarative.py:105:        return stub_result
+tests/test_experiments_declarative.py:111:    assert payload == stub_result
+tests/test_experiments_declarative.py:116:    stub_result = {"runs": [{"seed": 1, "metrics": {"sigma": 1.0}}]}
+tests/test_experiments_declarative.py:119:    monkeypatch.setattr(declarative, "run_experiment", lambda _: stub_result)
+tests/test_experiments_declarative.py:124:    assert json.dumps(stub_result, indent=2, sort_keys=True) in captured
+scripts/scan_governed_docs.py:12:- 0: All checks pass
+scripts/validate_changed_paths.py:24:    pass
+tests/validation/test_verify_hypothesis_v2.py:45:    # Check consolidation gates pass
+tests/test_no_escape_tripwires.py:48:    needles = ("TODO", "FIXME")
+src/bnsyn/viz/dashboard.py:50:    Imports matplotlib at runtime to avoid mypy checking missing stubs.
+from __future__ import annotations
+
+import importlib.util
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+WORKFLOWS_DIR = REPO_ROOT / ".github" / "workflows"
+CANONICAL_WORKFLOW = WORKFLOWS_DIR / "ci-pr-atomic.yml"
+MAKEFILE = REPO_ROOT / "Makefile"
+PRECOMMIT = REPO_ROOT / ".pre-commit-config.yaml"
+PYPROJECT = REPO_ROOT / "pyproject.toml"
+README = REPO_ROOT / "README.md"
+TESTING_DOC = REPO_ROOT / "docs" / "TESTING.md"
+
+TEST_INSTALL_CMD = 'python -m pip install -e ".[test]"'
+CANONICAL_GATE_CMD = "make test-gate"
+COLLECT_CMD = "python -m pytest --collect-only -q"
+VALIDATOR_CMD = "python -m scripts.validate_trifix_invariants"
+
+
+class ValidationError(RuntimeError):
+    pass
+
+
+def _read(path: Path) -> str:
+    if not path.exists():
+        raise ValidationError(f"required file not found: {path.relative_to(REPO_ROOT)}")
+    return path.read_text(encoding="utf-8")
+
+
+def _check_top_level_permissions() -> None:
+    missing: list[str] = []
+    for workflow in sorted(WORKFLOWS_DIR.glob("*.yml")):
+        lines = workflow.read_text(encoding="utf-8").splitlines()
+        if not any(line.startswith("permissions:") for line in lines):
+            missing.append(str(workflow.relative_to(REPO_ROOT)))
+    if missing:
+        raise ValidationError(
+            "I1 violation: workflows missing top-level permissions: " + ", ".join(missing)
+        )
+
+
+def _extract_tool_versions() -> dict[str, set[str]]:
+    versions: dict[str, set[str]] = {"ruff": set(), "bandit": set()}
+
+    pyproject = _read(PYPROJECT)
+    for tool in ("ruff", "bandit"):
+        for match in re.findall(rf'"{tool}==([^"]+)"', pyproject):
+            versions[tool].add(match)
+
+    precommit = _read(PRECOMMIT)
+    tool_repo = None
+    for line in precommit.splitlines():
+        repo_match = re.search(r"repo:\s*(.+)$", line)
+        if repo_match:
+            repo_val = repo_match.group(1)
+            if "ruff-pre-commit" in repo_val:
+                tool_repo = "ruff"
+            elif "PyCQA/bandit" in repo_val:
+                tool_repo = "bandit"
+            else:
+                tool_repo = None
+            continue
+
+        rev_match = re.search(r"^\s*rev:\s*v?([0-9][^\s]*)", line)
+        if rev_match and tool_repo:
+            versions[tool_repo].add(rev_match.group(1))
+            tool_repo = None
+
+        if "additional_dependencies:" in line:
+            for tool in ("ruff", "bandit"):
+                for match in re.findall(rf"{tool}==([^\],\s]+)", line):
+                    versions[tool].add(match)
+
+    return versions
+
+
+def _check_tool_versions() -> None:
+    versions = _extract_tool_versions()
+    for tool, vals in versions.items():
+        if not vals:
+            raise ValidationError(f"I2 violation: no pinned {tool} version found")
+        if len(vals) != 1:
+            raise ValidationError(
+                f"I2 violation: multiple {tool} versions detected: {sorted(vals)}"
+            )
+
+
+def _check_canonical_workflow() -> None:
+    wf_text = _read(CANONICAL_WORKFLOW)
+    if TEST_INSTALL_CMD not in wf_text:
+        raise ValidationError("I3 violation: canonical workflow missing TEST_INSTALL_CMD")
+    if COLLECT_CMD not in wf_text:
+        raise ValidationError("I3 violation: canonical workflow missing collect-only step")
+    if VALIDATOR_CMD not in wf_text:
+        raise ValidationError("I3 violation: canonical workflow missing validator step")
+    if CANONICAL_GATE_CMD not in wf_text:
+        raise ValidationError("I3 violation: canonical workflow missing canonical gate command")
+
+    install_pos = wf_text.find(TEST_INSTALL_CMD)
+    collect_pos = wf_text.find(COLLECT_CMD)
+    validator_pos = wf_text.find(VALIDATOR_CMD)
+    gate_pos = wf_text.find(CANONICAL_GATE_CMD)
+    if not (install_pos < collect_pos < validator_pos < gate_pos):
+        raise ValidationError(
+            "I3 violation: install -> collect -> validator -> gate ordering is not enforced"
+        )
+
+
+def _check_ssot_strings() -> None:
+    makefile = _read(MAKEFILE)
+    if "test-gate:" not in makefile or 'python -m pytest -m "not (validation or property)" -q' not in makefile:
+        raise ValidationError("I3 violation: Makefile test-gate target is out of SSOT sync")
+
+    for doc in (README, TESTING_DOC):
+        if not doc.exists():
+            continue
+        text = _read(doc)
+        if "make test-gate" in text and CANONICAL_GATE_CMD not in text:
+            raise ValidationError(
+                f"I3 violation: {doc.relative_to(REPO_ROOT)} gate command does not match canonical"
+            )
+        if ".[test]" in text and TEST_INSTALL_CMD not in text:
+            raise ValidationError(
+                f"I3 violation: {doc.relative_to(REPO_ROOT)} install command does not match canonical"
+            )
+
+
+def _run(cmd: str) -> str:
+    proc = subprocess.run(
+        cmd,
+        cwd=REPO_ROOT,
+        shell=True,
+        text=True,
+        capture_output=True,
+        timeout=600,
+        check=False,
+    )
+    out = f"{proc.stdout}\n{proc.stderr}"
+    if proc.returncode != 0:
+        raise ValidationError(f"command failed ({cmd}) with exit {proc.returncode}\n{out}")
+    return out
+
+
+def _deps_missing() -> bool:
+    required_modules = ("yaml", "hypothesis")
+    return any(importlib.util.find_spec(mod) is None for mod in required_modules)
+
+
+def _check_non_empty_suite() -> None:
+    if _deps_missing():
+        _run(TEST_INSTALL_CMD)
+
+    collect_out = _run(COLLECT_CMD)
+    if re.search(r"collected\s+0\s+items", collect_out):
+        raise ValidationError("I4 violation: collect-only reported zero tests")
+
+    gate_out = _run(CANONICAL_GATE_CMD)
+    if re.search(r"collected\s+0\s+items", gate_out):
+        raise ValidationError("I4 violation: canonical gate reported zero tests")
+
+
+def main() -> int:
+    try:
+        _check_top_level_permissions()
+        _check_tool_versions()
+        _check_canonical_workflow()
+        _check_ssot_strings()
+        _check_non_empty_suite()
+    except ValidationError as exc:
+        print(f"FAIL: {exc}")
+        return 1
+
+    print("PASS: Tri-Fix invariants validated")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+<div align="center">
+  <img src="docs/assets/hero.svg" alt="BN-Syn project banner" width="100%" />
+</div>
+
+# BN-Syn Thermostated Bio-AI System
+
+BN-Syn is an engineering-grade simulation repository for phase-controlled emergent neural dynamics.
+It ships code, tests, reproducibility checks, and governance artifacts in one versioned tree.
+Use this repo to run deterministic demos, validate invariants, and inspect evidence-backed outputs.
+The runtime code lives in `src/bnsyn/`; CI/workflow policy lives in `.github/workflows/`.
+Generated artifacts are written to `artifacts/` for local verification.
+Default development flow is Make-target driven and lockfile-oriented.
+For onboarding, use exactly one path: `docs/START_HERE.md`.
+
+[![CI PR](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/ci-pr.yml/badge.svg)](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/ci-pr.yml)
+[![Atomic PR Gate](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/ci-pr-atomic.yml/badge.svg)](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/ci-pr-atomic.yml)
+[![Docs](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/docs.yml/badge.svg)](https://github.com/neuron7x/bnsyn-phase-controlled-emergent-dynamics/actions/workflows/docs.yml)
+
+## Quickstart
+
+```bash
+make setup
+make demo
+make test
+```
+
+## Canonical links
+
+- Onboarding funnel: [docs/START_HERE.md](docs/START_HERE.md)
+- Reproduce proof: [docs/proof/REPRODUCE.md](docs/proof/REPRODUCE.md)
+- Contributing workflow: [docs/TESTING.md](docs/TESTING.md)
+- Security docs: [docs/SECURITY_GITLEAKS.md](docs/SECURITY_GITLEAKS.md)
+- Architecture: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- Status: [docs/STATUS.md](docs/STATUS.md)
+
+## Maintainers / Repo Contract
+
+```bash
+make quickstart-smoke
+python -m pip install -e .
+python -m bnsyn --help
+bnsyn demo --steps 120 --dt-ms 0.1 --seed 123 --N 32
+```
+
+
+## Test commands
+
+```bash
+make test-gate
+make test
+make test-all
+```
+# Architecture
+
+This page maps runtime and governance flows to repository paths (see path/docs/ARCHITECTURE.md).
+Back to project landing page: [README.md](../README.md) (see path/README.md).
+
+## Runtime execution flow
+
+```mermaid
+flowchart LR
+  A["src/bnsyn/cli.py"] --> B["src/bnsyn/"]
+  B --> C["experiments/"]
+  B --> D["results/ + figures/"]
+  C --> D
+```
+
+The CLI entrypoint is `src/bnsyn/cli.py` (see path/src/bnsyn/cli.py).
+Runtime modules are under `src/bnsyn/` (see path/src/bnsyn).
+Experiment definitions are under `experiments/` (see path/experiments).
+Artifacts are written under `results/` and `figures/` (see path/results) (see path/figures).
+
+## Governance and validation flow
+
+```mermaid
+flowchart LR
+  A["specs/ + schemas/ + claims/ + docs/"] --> B["scripts/"]
+  B --> C[".github/workflows/"]
+```
+
+SSOT sources are versioned under `specs/`, `schemas/`, `claims/`, and `docs/` (see path/specs) (see path/schemas) (see path/claims) (see path/docs).
+Validation scripts run from `scripts/` (see path/scripts).
+CI gates are defined in `.github/workflows/` (see path/.github/workflows).
+
+## Key Paths
+
+- Runtime entrypoint: `src/bnsyn/cli.py` (see path/src/bnsyn/cli.py)
+- Runtime package: `src/bnsyn/` (see path/src/bnsyn)
+- Experiment assets: `experiments/` (see path/experiments)
+- Result artifacts: `results/` (see path/results)
+- Figure artifacts: `figures/` (see path/figures)
+- Validation scripts: `scripts/` (see path/scripts)
+- CI workflows: `.github/workflows/` (see path/.github/workflows)
+"""Control-loop API surface for BN-Syn.
+
+Parameters
+----------
+None
+
+Returns
+-------
+None
+
+Notes
+-----
+Aggregates criticality and temperature control utilities for public access.
+
+References
+----------
+docs/SPEC.md#P0-4
+docs/SPEC.md#P1-5
+"""
+
+from __future__ import annotations
+
+from bnsyn.criticality.branching import BranchingEstimator, SigmaController
+from bnsyn.energy.regularization import energy_cost, total_reward
+from bnsyn.temperature.schedule import TemperatureSchedule, gate_sigmoid
+
+__all__ = [
+    "BranchingEstimator",
+    "SigmaController",
+    "TemperatureSchedule",
+    "gate_sigmoid",
+    "energy_cost",
+    "total_reward",
+]
+"""Pydantic models for experiment configuration schema.
+
+Auto-generated from schemas/experiment.schema.json.
+Provides type-safe experiment configuration with validation.
+
+References
+----------
+docs/LEGENDARY_QUICKSTART.md
+"""
+
+from __future__ import annotations
+
+from math import isclose
+
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+
+class ExperimentConfig(BaseModel):
+    """Experiment metadata configuration.
+
+    Parameters
+    ----------
+    name : str
+        Experiment name (lowercase alphanumeric, underscore, dash)
+    version : str
+        Version identifier (e.g., v1, v2)
+    seeds : list[int]
+        Random seeds for reproducibility (1-100 unique positive integers)
+    """
+
+    name: str = Field(..., pattern=r"^[a-z0-9_-]+$")
+    version: str = Field(..., pattern=r"^v[0-9]+$")
+    seeds: list[int] = Field(..., min_length=1, max_length=100)
+
+    @field_validator("seeds")
+    @classmethod
+    def validate_seeds(cls, v: list[int]) -> list[int]:
+        """Validate that seeds are unique positive integers."""
+        if any(not isinstance(seed, int) or isinstance(seed, bool) or seed <= 0 for seed in v):
+            raise ValueError("seeds must contain only positive integers")
+        if len(set(v)) != len(v):
+            raise ValueError("seeds must be unique positive integers")
+        return v
+
+    model_config = {"extra": "forbid"}
+
+
+class NetworkConfig(BaseModel):
+    """Network configuration.
+
+    Parameters
+    ----------
+    size : int
+        Number of neurons (10-100000)
+    """
+
+    size: int = Field(..., ge=10, le=100000)
+
+    model_config = {"extra": "forbid"}
+
+
+class SimulationConfig(BaseModel):
+    """Simulation parameters configuration.
+
+    Parameters
+    ----------
+    duration_ms : float
+        Simulation duration in milliseconds (≥1)
+    dt_ms : float
+        Timestep in milliseconds (must be 0.01, 0.05, 0.1, 0.5, or 1.0)
+    """
+
+    duration_ms: float = Field(..., ge=1)
+    dt_ms: float
+
+    @field_validator("dt_ms")
+    @classmethod
+    def validate_dt_ms(cls, v: float) -> float:
+        """Validate that dt_ms is one of the allowed values."""
+        allowed_values = [0.01, 0.05, 0.1, 0.5, 1.0]
+        if v not in allowed_values:
+            raise ValueError(f"dt_ms must be one of {allowed_values}, got {v}")
+        return v
+
+    @model_validator(mode="after")
+    def validate_duration_multiple(self) -> "SimulationConfig":
+        """Validate that duration_ms is an integer multiple of dt_ms."""
+        ratio = self.duration_ms / self.dt_ms
+        nearest = round(ratio)
+        if not isclose(ratio, nearest, rel_tol=0.0, abs_tol=1e-6):
+            raise ValueError(
+                "duration_ms must be an integer multiple of dt_ms within tolerance; "
+                f"got duration_ms={self.duration_ms}, dt_ms={self.dt_ms}"
+            )
+        return self
+
+    model_config = {"extra": "forbid"}
+
+
+class BNSynExperimentConfig(BaseModel):
+    """Complete BN-Syn experiment configuration.
+
+    Parameters
+    ----------
+    experiment : ExperimentConfig
+        Experiment metadata
+    network : NetworkConfig
+        Network configuration
+    simulation : SimulationConfig
+        Simulation parameters
+
+    Examples
+    --------
+    Load from YAML::
+
+        import yaml
+        from bnsyn.schemas.experiment import BNSynExperimentConfig
+
+        with open("config.yaml") as f:
+            data = yaml.safe_load(f)
+        config = BNSynExperimentConfig(**data)
+    """
+
+    experiment: ExperimentConfig
+    network: NetworkConfig
+    simulation: SimulationConfig
+
+    model_config = {"extra": "forbid"}
+"""Parameter definitions for BN-Syn components.
+
+Parameters
+----------
+None
+
+Returns
+-------
+None
+
+Notes
+-----
+Defines typed parameter models used across SPEC components.
+
+References
+----------
+docs/SPEC.md
+docs/SSOT.md
+"""
+
+from __future__ import annotations
+
+from pydantic import BaseModel, Field, PositiveFloat
+
+
+class AdExParams(BaseModel):
+    """AdEx neuron parameters (units: pF, nS, mV, ms, pA).
+
+    Parameters
+    ----------
+    C_pF : float
+        Membrane capacitance (pF).
+    gL_nS : float
+        Leak conductance (nS).
+    EL_mV : float
+        Leak reversal potential (mV).
+    VT_mV : float
+        Spike threshold (mV).
+    DeltaT_mV : float
+        Exponential slope factor (mV).
+    tauw_ms : float
+        Adaptation time constant (ms).
+    a_nS : float
+        Subthreshold adaptation conductance (nS).
+    b_pA : float
+        Spike-triggered adaptation increment (pA).
+    Vreset_mV : float
+        Reset voltage after spike (mV).
+    Vpeak_mV : float
+        Spike peak clamp voltage (mV).
+
+    Notes
+    -----
+    These parameters implement the SPEC P0-1 AdEx neuron model.
+
+    References
+    ----------
+    docs/SPEC.md#P0-1
+    """
+
+    # Units: pF, nS, mV, ms, pA
+    C_pF: PositiveFloat = Field(default=150.0, description="Membrane capacitance (pF)")
+    gL_nS: PositiveFloat = Field(default=10.0, description="Leak conductance (nS)")
+    EL_mV: float = Field(default=-70.0, description="Leak reversal (mV)")
+    VT_mV: float = Field(default=-55.0, description="Threshold (mV)")
+    DeltaT_mV: PositiveFloat = Field(default=2.0, description="Slope factor (mV)")
+    tauw_ms: PositiveFloat = Field(default=200.0, description="Adaptation time constant (ms)")
+    a_nS: float = Field(default=2.0, description="Subthreshold adaptation (nS)")
+    b_pA: float = Field(default=80.0, description="Spike-triggered adaptation increment (pA)")
+    Vreset_mV: float = Field(default=-58.0, description="Reset voltage (mV)")
+    Vpeak_mV: float = Field(default=30.0, description="Spike peak clamp (mV)")
+
+
+class SynapseParams(BaseModel):
+    """Synapse parameters for conductance-based synapses.
+
+    Parameters
+    ----------
+    E_AMPA_mV : float
+        AMPA reversal potential (mV).
+    E_NMDA_mV : float
+        NMDA reversal potential (mV).
+    E_GABAA_mV : float
+        GABA_A reversal potential (mV).
+    tau_AMPA_ms : float
+        AMPA decay time constant (ms).
+    tau_NMDA_ms : float
+        NMDA decay time constant (ms).
+    tau_GABAA_ms : float
+        GABA_A decay time constant (ms).
+    delay_ms : float
+        Synaptic transmission delay (ms).
+    mg_mM : float
+        Extracellular magnesium concentration (mM).
+
+    Notes
+    -----
+    Parameters support conductance-based synapse dynamics in SPEC P0-2.
+
+    References
+    ----------
+    docs/SPEC.md#P0-2
+    """
+
+    E_AMPA_mV: float = 0.0
+    E_NMDA_mV: float = 0.0
+    E_GABAA_mV: float = -70.0
+
+    tau_AMPA_ms: PositiveFloat = 2.5
+    tau_NMDA_ms: PositiveFloat = 100.0
+    tau_GABAA_ms: PositiveFloat = 6.0
+
+    delay_ms: PositiveFloat = 1.0
+    mg_mM: PositiveFloat = 1.0  # extracellular Mg2+
+
+
+class PlasticityParams(BaseModel):
+    """Three-factor plasticity parameters.
+
+    Parameters
+    ----------
+    tau_e_ms : float
+        Eligibility trace decay time constant (ms).
+    tau_plus_ms : float
+        STDP potentiation trace time constant (ms).
+    tau_minus_ms : float
+        STDP depression trace time constant (ms).
+    A_plus : float
+        Potentiation amplitude.
+    A_minus : float
+        Depression amplitude.
+    eta : float
+        Learning rate for three-factor updates.
+    w_min : float
+        Minimum synaptic weight.
+    w_max : float
+        Maximum synaptic weight.
+
+    Notes
+    -----
+    Implements the SPEC P0-3 three-factor plasticity rule.
+
+    References
+    ----------
+    docs/SPEC.md#P0-3
+    """
+
+    tau_e_ms: PositiveFloat = 500.0
+    tau_plus_ms: PositiveFloat = 20.0
+    tau_minus_ms: PositiveFloat = 20.0
+    A_plus: PositiveFloat = 1.0
+    A_minus: PositiveFloat = 1.05
+    eta: PositiveFloat = 5e-3
+    w_min: float = 0.0
+    w_max: float = 200.0
+
+
+class CriticalityParams(BaseModel):
+    """Criticality control parameters for sigma tracking.
+
+    Parameters
+    ----------
+    sigma_target : float
+        Target branching ratio.
+    eta_sigma : float
+        Gain update rate for sigma control.
+    gain_min : float
+        Lower bound on gain.
+    gain_max : float
+        Upper bound on gain.
+
+    Notes
+    -----
+    Used by the SPEC P0-4 sigma tracking control loop.
+
+    References
+    ----------
+    docs/SPEC.md#P0-4
+    """
+
+    sigma_target: float = 1.0
+    eta_sigma: PositiveFloat = 1e-3
+    gain_min: PositiveFloat = 0.2
+    gain_max: PositiveFloat = 5.0
+
+
+class TemperatureParams(BaseModel):
+    """Temperature schedule and gate parameters.
+
+    Parameters
+    ----------
+    T0 : float
+        Initial temperature.
+    Tmin : float
+        Minimum temperature floor.
+    alpha : float
+        Cooling factor per update.
+    Tc : float
+        Critical temperature for gating.
+    gate_tau : float
+        Sigmoid sharpness for temperature gating.
+
+    Notes
+    -----
+    Parameters drive the SPEC P1-2 temperature schedule.
+
+    References
+    ----------
+    docs/SPEC.md#P1-2
+    """
+
+    T0: PositiveFloat = 1.0
+    Tmin: PositiveFloat = 1e-3
+    alpha: float = Field(default=0.95, ge=0.0, le=1.0)
+    Tc: PositiveFloat = 0.1
+    gate_tau: float = Field(
+        default=0.02,
+        ge=0.015,
+        le=0.08,
+        description=(
+            "Validated temperature-gate slope window from ablation studies; "
+            "narrow bounds prevent near-binary gating at low tau and over-flat gating at high tau."
+        ),
+    )
+
+
+class DualWeightParams(BaseModel):
+    """Dual-weight consolidation parameters.
+
+    Parameters
+    ----------
+    tau_f_s : float
+        Fast weight decay time constant (s).
+    tau_tag_s : float
+        Synaptic tag decay time constant (s).
+    tau_p_s : float
+        Protein pool decay time constant (s).
+    theta_tag : float
+        Tagging threshold.
+    eta_f : float
+        Fast weight learning rate.
+    eta_c : float
+        Consolidation learning rate.
+
+    Notes
+    -----
+    Parameters implement the SPEC P1-6 dual-weight consolidation dynamics.
+
+    References
+    ----------
+    docs/SPEC.md#P1-6
+    """
+
+    tau_f_s: PositiveFloat = 1800.0  # 30 min
+    tau_tag_s: PositiveFloat = 5400.0  # 90 min
+    tau_p_s: PositiveFloat = 7200.0  # 2 h
+    theta_tag: PositiveFloat = 0.25
+    eta_f: PositiveFloat = 0.05
+    eta_c: PositiveFloat = 0.005
+
+"""BN-Syn package entry point and version metadata.
+
+Parameters
+----------
+None
+
+Returns
+-------
+None
+
+Notes
+-----
+This module exposes the package version and provides top-level access to
+core configuration and RNG utilities without modifying simulation behavior.
+
+References
+----------
+docs/SPEC.md
+"""
+
+from __future__ import annotations
+
+from importlib import metadata
+
+from bnsyn.api import phase_atlas, run, sleep_stack
+
+try:
+    __version__ = metadata.version("bnsyn")
+except metadata.PackageNotFoundError:  # pragma: no cover
+    __version__ = "0.0.0"
+
+__all__ = ["__version__", "rng", "config", "neurons", "synapses", "control", "simulation", "run", "phase_atlas", "sleep_stack"]
+....                                                                     [100%]
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 29%]
+................................................................ss....ss [ 38%]
+.............................................................ss......... [ 48%]
+........................................................................ [ 58%]
+.....................................................s.................. [ 67%]
+........................................................................ [ 77%]
+........................................................................ [ 87%]
+........................................................................ [ 96%]
+.......................                                                  [100%]
+=============================== warnings summary ===============================
+tests/test_cli_interactive.py::test_cli_module_main_executes
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.cli' found in sys.modules after import of package 'bnsyn', but prior to execution of 'bnsyn.cli'; this may result in unpredictable behaviour
+
+tests/test_coverage_gap_extensions.py::test_viz_interactive_optional_dependency_errors
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.viz.interactive' found in sys.modules after import of package 'bnsyn.viz', but prior to execution of 'bnsyn.viz.interactive'; this may result in unpredictable behaviour
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Failed to capture git SHA: Command '['/usr/bin/git', 'rev-parse', 'HEAD']' returned non-zero exit status 128.
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Using fallback git identifier: release-0.0.0
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+All checks passed!
+Success: no issues found in 75 source files
+ M proof_bundle/logs/session.log
+?? src/bnsyn/biodigital/
+?? tests/biodigital/
+=== refinement run ===
+Fri Feb 20 01:24:01 UTC 2026
+......                                                                   [100%]
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 28%]
+.......................................................FF.........ss.... [ 38%]
+ss.............................................................ss....... [ 48%]
+........................................................................ [ 57%]
+.......................................................s................ [ 67%]
+........................................................................ [ 77%]
+........................................................................ [ 86%]
+........................................................................ [ 96%]
+.........................                                                [100%]
+=================================== FAILURES ===================================
+_________________ test_inventory_json_matches_repository_state _________________
+
+    def test_inventory_json_matches_repository_state() -> None:
+        root = Path(__file__).resolve().parents[1]
+        paths = ["src", "tests", "docs", ".github"]
+    
+        counts = {path: len(_tracked_files_under(path)) for path in paths}
+        workflows = sorted(path.name for path in (root / ".github" / "workflows").glob("*.yml"))
+        detected_tools = [
+            name
+            for name in ["pyproject.toml", "requirements-lock.txt", "docker-compose.yml", "Makefile"]
+            if (root / name).exists()
+        ]
+    
+        expected = {
+            "_generated_by": "python tools/generate_inventory.py",
+            "paths": paths,
+            "counts": counts,
+            "workflows": workflows,
+            "detected_tools": detected_tools,
+        }
+    
+        inventory = json.loads((root / "INVENTORY.json").read_text(encoding="utf-8"))
+>       assert inventory == expected
+E       AssertionError: assert {'_generated_...github'], ...} == {'_generated_...github'], ...}
+E         
+E         Omitting 4 identical items, use -vv to show
+E         Differing items:
+E         {'counts': {'.github': 56, 'docs': 286, 'src': 74, 'tests': 194}} != {'counts': {'.github': 56, 'docs': 286, 'src': 76, 'tests': 195}}
+E         Use -v to get more diff
+
+tests/test_generate_inventory.py:36: AssertionError
+___________________ test_build_inventory_render_matches_file ___________________
+
+    def test_build_inventory_render_matches_file() -> None:
+        root = Path(__file__).resolve().parents[1]
+        rendered = render_inventory(build_inventory(root))
+>       assert (root / "INVENTORY.json").read_text(encoding="utf-8") == rendered
+E       assert '{\n  "_gener...le"\n  ]\n}\n' == '{\n  "_gener...le"\n  ]\n}\n'
+E         
+E         Skipping 143 identical leading characters in diff, use -v to show
+E         Skipping 1228 identical trailing characters in diff, use -v to show
+E         -   "src": 76,
+E         ?           ^
+E         +   "src": 74,
+E         ?           ^...
+E         
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+tests/test_generate_inventory.py:42: AssertionError
+=============================== warnings summary ===============================
+tests/test_cli_interactive.py::test_cli_module_main_executes
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.cli' found in sys.modules after import of package 'bnsyn', but prior to execution of 'bnsyn.cli'; this may result in unpredictable behaviour
+
+tests/test_coverage_gap_extensions.py::test_viz_interactive_optional_dependency_errors
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.viz.interactive' found in sys.modules after import of package 'bnsyn.viz', but prior to execution of 'bnsyn.viz.interactive'; this may result in unpredictable behaviour
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Failed to capture git SHA: Command '['/usr/bin/git', 'rev-parse', 'HEAD']' returned non-zero exit status 128.
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Using fallback git identifier: release-0.0.0
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_generate_inventory.py::test_inventory_json_matches_repository_state
+FAILED tests/test_generate_inventory.py::test_build_inventory_render_matches_file
+All checks passed!
+Success: no issues found in 75 source files
+UPDATED: INVENTORY.json
+..                                                                       [100%]
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 28%]
+..................................................................ss.... [ 38%]
+ss.............................................................ss....... [ 48%]
+........................................................................ [ 57%]
+.......................................................s................ [ 67%]
+........................................................................ [ 77%]
+........................................................................ [ 86%]
+........................................................................ [ 96%]
+.........................                                                [100%]
+=============================== warnings summary ===============================
+tests/test_cli_interactive.py::test_cli_module_main_executes
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.cli' found in sys.modules after import of package 'bnsyn', but prior to execution of 'bnsyn.cli'; this may result in unpredictable behaviour
+
+tests/test_coverage_gap_extensions.py::test_viz_interactive_optional_dependency_errors
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.viz.interactive' found in sys.modules after import of package 'bnsyn.viz', but prior to execution of 'bnsyn.viz.interactive'; this may result in unpredictable behaviour
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Failed to capture git SHA: Command '['/usr/bin/git', 'rev-parse', 'HEAD']' returned non-zero exit status 128.
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Using fallback git identifier: release-0.0.0
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+All checks passed!
+Success: no issues found in 75 source files
+=== session start 2026-02-20T01:43:39+00:00 ===
+src/bnsyn/viz/dashboard.py:50:    Imports matplotlib at runtime to avoid mypy checking missing stubs.
+tests/test_experiments_declarative.py:102:    stub_result = {"runs": [{"seed": 1, "metrics": {"sigma": 1.0}}]}
+tests/test_experiments_declarative.py:105:        return stub_result
+tests/test_experiments_declarative.py:111:    assert payload == stub_result
+tests/test_experiments_declarative.py:116:    stub_result = {"runs": [{"seed": 1, "metrics": {"sigma": 1.0}}]}
+tests/test_experiments_declarative.py:119:    monkeypatch.setattr(declarative, "run_experiment", lambda _: stub_result)
+tests/test_experiments_declarative.py:124:    assert json.dumps(stub_result, indent=2, sort_keys=True) in captured
+tests/test_verify_reproducible_artifacts.py:44:    assert payload[0]["status"] == "pass"
+tests/test_scan_placeholders.py:97:        "    raise NotImplementedError\n"
+tests/test_scan_placeholders.py:99:        "    raise NotImplementedError()\n"
+tests/test_scan_placeholders.py:101:        "    raise builtins.NotImplementedError()\n",
+tests/test_scan_placeholders.py:118:    assert all(item.signature == "raise_NotImplementedError" for item in findings)
+tests/test_scan_placeholders.py:151:        "    # TODO: implement branch\n"
+tests/test_scan_placeholders.py:154:        "# FIXME: remove fallback\n",
+tests/test_scan_placeholders.py:179:        "    # TODO: assertion later\n"
+tests/test_release_readiness.py:69:    assert result.status == "pass"
+tests/test_no_escape_tripwires.py:48:    needles = ("TODO", "FIXME")
+tests/validation/test_verify_hypothesis_v2.py:31:    """Test that bundled v2 results pass hypothesis verification."""
+tests/validation/test_verify_hypothesis_v2.py:45:    # Check consolidation gates pass
+tests/validation/test_verify_hypothesis_v2.py:46:    assert verification["consolidation_gates_pass"], "Consolidation gates should pass"
+ M proof_bundle/logs/session.log
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 28%]
+..................................................................ss.... [ 38%]
+ss.............................................................ss....... [ 48%]
+........................................................................ [ 57%]
+.......................................................s................ [ 67%]
+........................................................................ [ 77%]
+........................................................................ [ 86%]
+........................................................................ [ 96%]
+...........................                                              [100%]
+=============================== warnings summary ===============================
+tests/test_cli_interactive.py::test_cli_module_main_executes
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.cli' found in sys.modules after import of package 'bnsyn', but prior to execution of 'bnsyn.cli'; this may result in unpredictable behaviour
+
+tests/test_coverage_gap_extensions.py::test_viz_interactive_optional_dependency_errors
+  <frozen runpy>:128: RuntimeWarning: 'bnsyn.viz.interactive' found in sys.modules after import of package 'bnsyn.viz', but prior to execution of 'bnsyn.viz.interactive'; this may result in unpredictable behaviour
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Failed to capture git SHA: Command '['/usr/bin/git', 'rev-parse', 'HEAD']' returned non-zero exit status 128.
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+tests/test_manifest_builder.py::test_build_experiment_manifest_filters_manifest_json
+  /workspace/bnsyn-phase-controlled-emergent-dynamics/src/bnsyn/provenance/manifest_builder.py:145: UserWarning: Using fallback git identifier: release-0.0.0
+    "git_commit": _get_git_commit(resolved_root, resolved_version),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+All checks passed!
+Success: no issues found in 75 source files

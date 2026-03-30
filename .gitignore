@@ -47,5 +47,4 @@ artifacts/wheelhouse_report.json
 .tools/
 
 # Local command/evidence logs
-proof_bundle/logs/*.log
 !proof_bundle/logs/.gitkeep

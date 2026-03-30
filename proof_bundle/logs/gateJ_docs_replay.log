@@ -1,0 +1,10 @@
+{
+  "command": "python -m scripts.check_quickstart_consistency",
+  "cwd": "/workspace/bnsyn-phase-controlled-emergent-dynamics",
+  "env_delta_names": [],
+  "exit_code": 0,
+  "stderr": "",
+  "stdout": "quickstart consistency check PASSED\n",
+  "timestamp_end_utc": "2026-02-17T23:05:50.799092+00:00",
+  "timestamp_start_utc": "2026-02-17T23:05:50.722121+00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "command": "make lint",
+  "cwd": "/workspace/bnsyn-phase-controlled-emergent-dynamics",
+  "env_delta_names": [],
+  "exit_code": 2,
+  "stderr": "make: pylint: No such file or directory\nmake: *** [Makefile:142: lint] Error 127\n",
+  "stdout": "ruff check .\nAll checks passed!\npylint src/bnsyn\n",
+  "timestamp_end_utc": "2026-02-17T23:02:47.736974+00:00",
+  "timestamp_start_utc": "2026-02-17T23:02:47.572071+00:00"
+}
